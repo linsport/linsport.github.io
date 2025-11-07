@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>如何更改fluid主题</title>
+    <link href="/2025/11/07/%E6%9B%B4%E6%94%B9%E4%B8%BB%E5%9B%BE/"/>
+    <url>/2025/11/07/%E6%9B%B4%E6%94%B9%E4%B8%BB%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="自定义首页大标语"><a href="#自定义首页大标语" class="headerlink" title="自定义首页大标语"></a>自定义首页大标语</h1><ul><li>在 _config.fluid.yml 配置文件中，找到 index.slogan 部分。</li><li>直接设置文本：在 text 字段中填写你想要的标语。<blockquote><p>index:<br>slogan:<br>  enable: true<br>  text: </p></blockquote><ul><li>“欢迎来到我的小站”</li><li>“这里记录了我的学习与生活”</li></ul></li></ul><h1 id="自定义导航栏标题"><a href="#自定义导航栏标题" class="headerlink" title="自定义导航栏标题"></a>自定义导航栏标题</h1><ul><li>打开 _config.fluid.yml 文件，找到 navbar 部分下的 blog_title 项：<blockquote><p>navbar:<br>blog_title: “这里填写你希望在左上角显示的自定义标题”</p></blockquote></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title></title>
     <link href="/2025/11/03/maekdown/"/>
     <url>/2025/11/03/maekdown/</url>
