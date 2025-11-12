@@ -5,25 +5,6 @@
   
   <entry>
     <title>2025ctf校内赛Web</title>
-    <link href="/2025/11/12/ctf/2025%E6%A0%A1%E5%86%85%E8%B5%9BWeb%E7%AC%AC%E4%B8%80%E9%A2%98/"/>
-    <url>/2025/11/12/ctf/2025%E6%A0%A1%E5%86%85%E8%B5%9BWeb%E7%AC%AC%E4%B8%80%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Week1-Gitttttttt"><a href="#Week1-Gitttttttt" class="headerlink" title="[Week1] Gitttttttt"></a>[Week1] Gitttttttt</h1><p>在githack源代码目录中打开cmd输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">python githack.py 靶机地址/.git/<br></code></pre></td></tr></table></figure><p>打开所下载的文件夹，找到flag{}</p><h1 id="Week1-Ping"><a href="#Week1-Ping" class="headerlink" title="[Week1] Ping??"></a>[Week1] Ping??</h1><p>打开靶机发现<img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/ping1.png" alt="界面"><br>输入;ls查看目录列表，出现<code>flag.txt</code>与<code>index.php</code>直接在url后加入<code>/flag.txt</code>获取flag。<br><img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/ping2.png" alt="如图"></p><h1 id="Week1-from-http"><a href="#Week1-from-http" class="headerlink" title="[Week1] from_http"></a>[Week1] from_http</h1><p>打开靶机<img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/http1.png" alt="界面"><br>发现要求使用<code>?CTFBrowser</code>浏览器访问<br>使用<code>Burp Suite</code>拦截请求包,将<code>User-Agent:</code>栏修改为<code>?CTFBrowser</code>发送请求<br>发现出现新的要求<img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/http2.png" alt="要求"><br>如图输入后出现新的要求<img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/http3.png" alt="要求"><br><strong>注意</strong>：输入POST请求时必须要有<code>Content-Type 头部</code>没有这个头部，服务器可能无法正确解析 POST 参数。</p><p>照要求输入后出现新的要求<img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/http4.png" alt="要求"><br>按要求设置好cookie后题目需要请求来源为<code>?CTF</code><br>按要求添加<code>Referer:?CTF</code>即可，然后题目要求只能从本地访问，按要求在正文处添加<code>X-Forwarded-For: 127.0.0.1</code>伪装成本地请求即可。<br><img src="/img/ctf/2025ctf%E6%A0%A1%E5%86%85%E8%B5%9B/http5.png" alt="最后">最后得到flag。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>ctf</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>2025ctf校内赛Web</title>
     <link href="/2025/11/09/ctf/2025%E6%A0%A1%E5%86%85%E8%B5%9BWeb%E9%A2%98/"/>
     <url>/2025/11/09/ctf/2025%E6%A0%A1%E5%86%85%E8%B5%9BWeb%E9%A2%98/</url>
     
