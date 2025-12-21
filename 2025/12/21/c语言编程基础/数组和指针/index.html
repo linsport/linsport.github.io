@@ -1,0 +1,897 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sport lin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="指针什么是指针？基本概念指针就是内存地址。指针变量是存储内存地址的变量。 想象计算机内存就像一个大酒店：  房间号 &#x3D; 内存地址（指针） 房间里的客人 &#x3D; 存储在内存中的数据 房间号登记簿 &#x3D; 指针变量  指针变量的定义123456789101112类型 *指针变量名;#include &lt;stdio.h&gt;int main() &#123;    &#x2F;&#x2F; 定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组和指针">
+<meta property="og:url" content="https://linsport.github.io/2025/12/21/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="指针什么是指针？基本概念指针就是内存地址。指针变量是存储内存地址的变量。 想象计算机内存就像一个大酒店：  房间号 &#x3D; 内存地址（指针） 房间里的客人 &#x3D; 存储在内存中的数据 房间号登记簿 &#x3D; 指针变量  指针变量的定义123456789101112类型 *指针变量名;#include &lt;stdio.h&gt;int main() &#123;    &#x2F;&#x2F; 定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-21T03:52:38.271Z">
+<meta property="article:modified_time" content="2025-12-21T16:28:24.981Z">
+<meta property="article:author" content="sport lin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数组和指针 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/glassBG.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"linsport.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hello, World!</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/theme%20picture/1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数组和指针"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-21 11:52" pubdate>
+          2025年12月21日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数组和指针</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><h2 id="什么是指针？"><a href="#什么是指针？" class="headerlink" title="什么是指针？"></a>什么是指针？</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>指针就是内存地址。指针变量是存储内存地址的变量。</p>
+<p>想象计算机内存就像一个大酒店：</p>
+<ul>
+<li>房间号 &#x3D; 内存地址（指针）</li>
+<li>房间里的客人 &#x3D; 存储在内存中的数据</li>
+<li>房间号登记簿 &#x3D; 指针变量</li>
+</ul>
+<h2 id="指针变量的定义"><a href="#指针变量的定义" class="headerlink" title="指针变量的定义"></a>指针变量的定义</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">类型 *指针变量名;<br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 定义不同类型的指针</span><br>    <span class="hljs-type">int</span> *p_i;        <span class="hljs-comment">// 指向整型的指针，变量名为p_i</span><br>    <span class="hljs-type">char</span> *p_c;      <span class="hljs-comment">// 指向字符的指针，变量名为p_c</span><br>    <span class="hljs-type">float</span> *p_f;    <span class="hljs-comment">// 指向浮点数的指针，变量名为p_f</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="指针变量的引用"><a href="#指针变量的引用" class="headerlink" title="指针变量的引用"></a>指针变量的引用</h2><h3 id="取址运算符"><a href="#取址运算符" class="headerlink" title="取址运算符 &amp;"></a>取址运算符 &amp;</h3><p>取址运算符<code>&amp;</code>用来取得其操作数的地址。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//例如，如果 num 是一个整型变量，则 &amp;num 是它的地址</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> num = <span class="hljs-number">3</span>;<br>    <span class="hljs-type">int</span>* p = &amp;num;			<span class="hljs-comment">// 将变量num的地址取出来，存到指针p中</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d 的地址是 %p\n&quot;</span>, num, p);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//输出：3 的地址是 0x7ffeefbff3ac</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="解引用运算符"><a href="#解引用运算符" class="headerlink" title="解引用运算符 *"></a>解引用运算符 *</h3><p>解引用运算符(间接访问运算符)<code>*</code>用来获取指针所指向地址的值,它返回指针所指的对象的值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 1. 定义一个普通变量</span><br>    <span class="hljs-type">int</span> num = <span class="hljs-number">42</span>;<br>    <br>    <span class="hljs-comment">// 2. 定义一个指针，指向num的地址</span><br>    <span class="hljs-type">int</span> *p = &amp;num;<br>    <br>    <span class="hljs-comment">// 3. 使用解引用运算符 * 获取指针指向的值</span><br>    <span class="hljs-type">int</span> value = *p;  <span class="hljs-comment">// *p 就是 num 的值 42</span><br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num = %d\n&quot;</span>, num);      <span class="hljs-comment">// 输出: 42</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*p = %d\n&quot;</span>, *p);        <span class="hljs-comment">// 输出: 42</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;value = %d\n&quot;</span>, value);  <span class="hljs-comment">// 输出: 42</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><ol>
+<li>&amp; 和 * 的关系</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">对于任意变量 a：<br><span class="hljs-number">1.</span> *(&amp;a) == a      <span class="hljs-comment">// &amp; 和 * 相互抵消</span><br><span class="hljs-number">2.</span> &amp;(*p) == p      <span class="hljs-comment">// * 和 &amp; 相互抵消（p 是指向有效内存的指针）</span><br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>优先级和结合性</li>
+</ol>
+<ul>
+<li><code>&amp;</code>和<code>*</code>都是单目运算符(仅对一个操作数进行运算的运算符类型)</li>
+<li>优先级：2级（较高）</li>
+<li>结合性：自右向左</li>
+<li>&amp;*p 等价于 &amp;(*p)</li>
+<li>*&amp;a 等价于 *(&amp;a)</li>
+</ul>
+<ol start="3">
+<li>(<em>p_a)++与a++等价(注意，括号是必需的)。<br>这是因为</em>和+的优先级别相同，都是自右向左结合，若没有括号，就相当于*(p_a++)其执行过程是先取指针变量p_a所指向的值,再使指针变量p_a的值加1(指向下一个存储单元),而不是使所指向的变量a的值加1.</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 示例1: (*p)++</span><br>    <span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br>    <span class="hljs-type">int</span> *p = &amp;a;<br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a=%d\n&quot;</span>, a);        <span class="hljs-comment">// 输出: a=10</span><br>    (*p)++;                     <span class="hljs-comment">// a的值加1，p不变</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a=%d\n&quot;</span>, a);        <span class="hljs-comment">// 输出: a=11</span><br>    <br>    <span class="hljs-comment">// 示例2: *p++</span><br>    <span class="hljs-type">int</span> arr[] = &#123;<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">300</span>&#125;;<br>    <span class="hljs-type">int</span> *q = arr;<br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n*q=%d\n&quot;</span>, *q);    <span class="hljs-comment">// 输出: *q=100</span><br>    <span class="hljs-type">int</span> value = *q++;           <span class="hljs-comment">// 先取arr[0]的值，然后q指向arr[1]</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;value=%d\n&quot;</span>, value); <span class="hljs-comment">// 输出: value=100</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*q=%d\n&quot;</span>, *q);      <span class="hljs-comment">// 输出: *q=200</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><p>一维数组就是一排整齐的盒子，每个盒子可以放同样类型的东西，每个盒子都有编号（从0开始）。</p>
+<h3 id="一维数组的定义与初始化"><a href="#一维数组的定义与初始化" class="headerlink" title="一维数组的定义与初始化"></a>一维数组的定义与初始化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">数据类型 数组名[大小];<br><br><span class="hljs-comment">// 方法1：声明时初始化</span><br><span class="hljs-type">int</span> numbers[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><br><span class="hljs-comment">// 方法2：部分初始化（剩余元素自动初始化为0）</span><br><span class="hljs-type">int</span> nums[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;  <span class="hljs-comment">// nums[3]和nums[4]自动为0</span><br><br><span class="hljs-comment">// 方法3：不指定大小，编译器自动计算</span><br><span class="hljs-type">int</span> days[] = &#123;<span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>&#125;;<br><br><span class="hljs-comment">// 方法4：全部初始化为0</span><br><span class="hljs-type">int</span> zeros[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="一维数组的引用"><a href="#一维数组的引用" class="headerlink" title="一维数组的引用"></a>一维数组的引用</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">数组名<span class="hljs-selector-attr">[下标]</span><br></code></pre></td></tr></table></figure>
+<h4 id="下标引用法"><a href="#下标引用法" class="headerlink" title="下标引用法"></a>下标引用法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>&#125;;<br><br><span class="hljs-comment">// 读取元素</span><br><span class="hljs-type">int</span> a = arr[<span class="hljs-number">0</span>];  <span class="hljs-comment">// a = 10</span><br><span class="hljs-type">int</span> b = arr[<span class="hljs-number">2</span>];  <span class="hljs-comment">// b = 30</span><br><br><span class="hljs-comment">// 修改元素</span><br>arr[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;     <span class="hljs-comment">// 第二个元素变为25</span><br>arr[<span class="hljs-number">3</span>] = arr[<span class="hljs-number">2</span>] * <span class="hljs-number">2</span>;  <span class="hljs-comment">// 第四个元素 = 30 * 2 = 60</span><br></code></pre></td></tr></table></figure>
+<h4 id="指针引用法"><a href="#指针引用法" class="headerlink" title="指针引用法"></a>指针引用法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><br><span class="hljs-comment">// 方法1：数组名是指向首元素的指针</span><br><span class="hljs-type">int</span> *p = arr;  <span class="hljs-comment">// p指向arr[0]</span><br><span class="hljs-type">int</span> x = *p;    <span class="hljs-comment">// x = 1</span><br><span class="hljs-type">int</span> y = *(p + <span class="hljs-number">2</span>);  <span class="hljs-comment">// y = 3</span><br><br><span class="hljs-comment">// 方法2：直接使用数组名</span><br><span class="hljs-type">int</span> z = *(arr + <span class="hljs-number">3</span>);  <span class="hljs-comment">// z = 4</span><br><br><span class="hljs-comment">// 方法3：指针自增</span><br><span class="hljs-type">int</span> *p = arr;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, *p);  <span class="hljs-comment">// 1</span><br>p++;  <span class="hljs-comment">// 指向下一个元素</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, *p);  <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+<p>注:<code>arr</code> 本身就是一个指针，可以直接赋值给指针变量 <code>p</code>。<code>arr</code> 是数组第 <code>0</code> 个元素的地址，所以<code>int *p = arr</code>;也可以写作<code>int *p = &amp;arr[0]</code>;。也就是说，<code>arr</code>、<code>p</code>、<code>&amp;arr[0]</code> 这三种写法都是等价的，它们都指向数组第 <code>0</code> 个元素，或者说指向数组的开头。</p>
+<p>指针法示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> i;          <span class="hljs-comment">// 循环变量</span><br>    <span class="hljs-type">int</span> a[<span class="hljs-number">10</span>];      <span class="hljs-comment">// 定义长度为10的整型数组，存储10个整数</span><br>    <span class="hljs-type">int</span> *p = a;     <span class="hljs-comment">// 指针p初始指向数组a的首地址（a是数组名，等价于&amp;a[0]）</span><br><br>    <span class="hljs-comment">// 循环输入10个整数到数组a中</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">         * scanf(&quot;%d&quot;, p++) 原理拆解：</span><br><span class="hljs-comment">         * 1. scanf的第二个参数要求是「内存地址」，用于接收输入的整数；</span><br><span class="hljs-comment">         * 2. p++ 是「后置自增运算符」，执行规则为「先使用，后自增」：</span><br><span class="hljs-comment">         *    - 第一步（使用）：将p当前指向的地址（如第一次循环是&amp;a[0]）传给scanf，</span><br><span class="hljs-comment">         *      scanf拿到地址后，把用户输入的整数写入该地址对应的内存（即a[0]）；</span><br><span class="hljs-comment">         *    - 第二步（自增）：scanf完成地址传递和数据写入后，p自动自增（p = p + 1），</span><br><span class="hljs-comment">         *      由于p是int*类型，「+1」实际是移动4字节（int占4字节），刚好指向数组下一个元素（如a[1]）；</span><br><span class="hljs-comment">         * 3. 循环10次后，p会从&amp;a[0]逐步移动到数组外的地址（&amp;a[10]），因此后续输出前必须重置p。</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, p++);<br>    &#125;<br>    p = a;  <span class="hljs-comment">// 重置指针p到数组首地址！若不重置，p当前指向数组外，输出会越界</span><br>    <span class="hljs-comment">// 循环输出数组的10个元素</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>        <span class="hljs-comment">// *p++ ：先取p当前指向的元素值（如a[0]）输出，再让p自增指向下一个元素</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, *p++);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="重要指针运算表达式"><a href="#重要指针运算表达式" class="headerlink" title="重要指针运算表达式"></a>重要指针运算表达式</h2><p><strong>假设 <code>p</code> 是指向数组 <code>arr</code> 中第 n 个元素的指针，那么 <code>*p++</code>、<code>*++p</code>、<code>(*p)++</code> 分别是什么意思呢？</strong></p>
+<ul>
+<li><p><code>*p++</code> 等价于 <code>*(p++)</code>，表示先取得第 <code>n</code> 个元素的值，再将 <code>p</code> 指向下一个元素。</p>
+</li>
+<li><p><code>*++p</code> 等价于 <code>*(++p)</code>，会先进行 <code>++p</code> 运算，使得 <code>p</code> 的值增加，指向下一个元素，整体上相当于 <code>*(p+1)</code>，所以会获得第 <code>n+1</code> 个数组元素的值。</p>
+</li>
+<li><p><code>(*p)++</code> 就非常简单了，会先取得第 <code>n</code> 个元素的值，再对该元素的值加 <code>1</code>。假设 <code>p</code> 指向第 <code>0</code> 个元素，并且第 <code>0</code> 个元素的值为 <code>99</code>，执行完该语句后，第 <code>0</code> 个元素的值就会变为 <code>100</code>。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c">示例:<br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> arr[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">int</span> *p;<br>    <br>    <span class="hljs-comment">// *p++ - 先取值后指针+1</span><br>    p = &amp;arr[<span class="hljs-number">2</span>];<br>    <span class="hljs-type">int</span> a = *p++;  <span class="hljs-comment">// a = 3, p指向arr[3]</span><br>    <br>    <span class="hljs-comment">// *++p - 先指针+1后取值  </span><br>    p = &amp;arr[<span class="hljs-number">2</span>];<br>    <span class="hljs-type">int</span> b = *++p;  <span class="hljs-comment">// b = 4, p指向arr[3]</span><br>    <br>    <span class="hljs-comment">// (*p)++ - 先取值后元素值+1</span><br>    p = &amp;arr[<span class="hljs-number">2</span>];<br>    <span class="hljs-type">int</span> c = (*p)++;  <span class="hljs-comment">// c = 3, arr[2]变为4</span><br>    <br>    <span class="hljs-comment">// ++(*p) - 元素值+1后取值</span><br>    p = &amp;arr[<span class="hljs-number">2</span>];<br>    <span class="hljs-type">int</span> d = ++(*p);  <span class="hljs-comment">// d = 5, arr[2]变为5</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><h3 id="二维数组的定义与初始化"><a href="#二维数组的定义与初始化" class="headerlink" title="二维数组的定义与初始化"></a>二维数组的定义与初始化</h3><p>二维数组是一个数组的数组。一个二维数组，在本质上是由多个一维数组构成。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c">数据类型 数组名[行数][列数];<br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 1. 分行初始化（推荐）</span><br>    <span class="hljs-type">int</span> matrix1[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<br>        &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;,<br>        &#123;<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>&#125;,<br>        &#123;<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br>    &#125;;<br>    <br>    <span class="hljs-comment">// 2. 连续初始化</span><br>    <span class="hljs-type">int</span> matrix2[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;;<br>    <br>    <span class="hljs-comment">// 3. 部分初始化（未指定的自动为0）</span><br>    <span class="hljs-type">int</span> matrix3[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<br>        &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;,        <span class="hljs-comment">// 第0行：1, 2, 0, 0</span><br>        &#123;<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>&#125;,     <span class="hljs-comment">// 第1行：5, 6, 7, 0</span><br>        &#123;<span class="hljs-number">9</span>&#125;            <span class="hljs-comment">// 第2行：9, 0, 0, 0</span><br>    &#125;;<br>    <br>    <span class="hljs-comment">// 4. 省略行数（编译器自动计算）</span><br>    <span class="hljs-type">int</span> matrix4[][<span class="hljs-number">4</span>] = &#123;<br>        &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;,<br>        &#123;<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>&#125;,<br>        &#123;<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;<br>    &#125;;  <span class="hljs-comment">// 自动为3行</span><br>    <br>    <span class="hljs-comment">// 5. 全零初始化</span><br>    <span class="hljs-type">int</span> matrix5[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>&#125;;  <span class="hljs-comment">// 所有元素为0</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="二维数组的引用"><a href="#二维数组的引用" class="headerlink" title="二维数组的引用"></a>二维数组的引用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c">数组名[行下标][列下标]<br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 3  <span class="hljs-comment">// 定义行数</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> M 4  <span class="hljs-comment">// 定义列数</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> a[N][M], i, j;  <span class="hljs-comment">// 定义N行M列的二维数组</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Input 3*4 data for the array:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;N; i++)  <span class="hljs-comment">// 外循环：控制行</span><br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;M; j++)  <span class="hljs-comment">// 内循环：控制列</span><br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i][j]);  <span class="hljs-comment">// 输入每个元素</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Output the array:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;N; i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>; j&lt;M; j++)<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%5d&quot;</span>, a[i][j]);  <span class="hljs-comment">// 输出每个元素（占5个字符宽度）</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);  <span class="hljs-comment">// 每行结束后换行</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">输入<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>后，输出为：<br>Output the <span class="hljs-built_in">array</span>:<br>    <span class="hljs-number">1</span>    <span class="hljs-number">2</span>    <span class="hljs-number">3</span>    <span class="hljs-number">4</span><br>    <span class="hljs-number">5</span>    <span class="hljs-number">6</span>    <span class="hljs-number">7</span>    <span class="hljs-number">8</span><br>    <span class="hljs-number">9</span>   <span class="hljs-number">10</span>   <span class="hljs-number">11</span>   <span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="二维数组的指针"><a href="#二维数组的指针" class="headerlink" title="二维数组的指针"></a>二维数组的指针</h3><p>在 C 语言中，二维数组本质是 “数组的数组”—— 它在内存中连续存储。二维数组的地址分两种类型：行地址（指向整行） 和 列地址（指向单个元素）。</p>
+<h3 id="列指针"><a href="#列指针" class="headerlink" title="列指针"></a>列指针</h3><p>列指针本质是指向 “单个元素” 的普通指针，对应二维数组的 “列地址”，利用二维数组在内存中 “连续存储” 的特性，可将二维数组当作 “超长一维数组” 遍历。<br><strong>什么是列指针？</strong><br>列指针是指向数组单个元素的普通指针（比如int *p），对应二维数组的 “列地址”：</p>
+<ul>
+<li>它指向的是二维数组中的某一个具体元素；</li>
+<li>列指针+1会直接跳转到当前行的下一个元素（仅偏移 1 个元素，而非整行）。</li>
+</ul>
+<h4 id="列指针的定义与用法"><a href="#列指针的定义与用法" class="headerlink" title="列指针的定义与用法"></a>列指针的定义与用法</h4><p>列指针的定义是普通指针的写法，无需额外语法，直接指向二维数组的首元素即可。示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-comment">// 定义3行4列的二维数组并初始化</span><br>    <span class="hljs-type">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;, &#123;<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>&#125;, &#123;<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>&#125;&#125;;<br>    <span class="hljs-comment">// 定义列指针p，指向数组首元素（第0行第0列）</span><br>    <span class="hljs-type">int</span> *p = &amp;a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;二维数组的元素输出：\n&quot;</span>);<br>    <span class="hljs-comment">// 遍历所有元素（3行×4列=12个）</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">12</span>; i++)<br>    &#123;<br>        <span class="hljs-comment">// 输出当前元素，再将指针移动到下一个元素</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%5d&quot;</span>, *p++);<br>        <span class="hljs-comment">// 每输出4个元素（对应一行）后换行</span><br>        <span class="hljs-keyword">if</span>((i + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span> == <span class="hljs-number">0</span>)<br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">二维数组的元素输出：<br>    <span class="hljs-number">1</span>    <span class="hljs-number">2</span>    <span class="hljs-number">3</span>    <span class="hljs-number">4</span><br>    <span class="hljs-number">5</span>    <span class="hljs-number">6</span>    <span class="hljs-number">7</span>    <span class="hljs-number">8</span><br>    <span class="hljs-number">9</span>   <span class="hljs-number">10</span>   <span class="hljs-number">11</span>   <span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+<p><strong>列指针的等价访问方式</strong><br>由于二维数组内存连续，列指针可通过 “一维下标” 访问任意元素（需结合列数计算位置），等价写法如下（以列数为 4 为例）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 访问第i行第j列的元素</span><br>*(p + i*<span class="hljs-number">4</span> + j) == p[i*<span class="hljs-number">4</span> + j] == a[i][j]<br></code></pre></td></tr></table></figure>
+<h3 id="行指针"><a href="#行指针" class="headerlink" title="行指针"></a>行指针</h3><p>行指针对应二维数组的 “行地址”，能直接按 “行 - 列” 结构访问数组，比列指针更贴合二维数组的逻辑结构。<br><strong>什么是行指针？</strong><br>行指针是指向 “固定长度一维数组” 的指针，对应二维数组的 “行地址”：</p>
+<ul>
+<li>它指向的是 “由 m 个元素组成的一维数组”（m 是二维数组的列数）；</li>
+<li>行指针+1会直接跳过一整行（即 m 个元素），比如指向含 4 个 int 的数组时，p+1会跳过 4 个 int，直接到下一行首地址。</li>
+</ul>
+<h4 id="行指针的定义与用法"><a href="#行指针的定义与用法" class="headerlink" title="行指针的定义与用法"></a>行指针的定义与用法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">数据类型 (*行指针变量)[一维数组长度];<br></code></pre></td></tr></table></figure>
+<p>例如，定义一个指向 “含 4 个 int 的一维数组” 的行指针：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> (*p)[<span class="hljs-number">4</span>];<br><br><span class="hljs-comment">//注意：*p两侧的括号不能省略—— 因为方括号[]的优先级高于*，若写成int *p[4]，会被解析为 “指针数组”（含 4 个 int 指针的数组），而非行指针。</span><br></code></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-comment">// 定义3行4列的二维数组并初始化</span><br>    <span class="hljs-type">int</span> a[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>&#125;, &#123;<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>&#125;, &#123;<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>&#125;&#125;;<br>    <span class="hljs-comment">// 定义行指针p，指向“含4个int的一维数组”</span><br>    <span class="hljs-type">int</span> (*p)[<span class="hljs-number">4</span>];<br>    <span class="hljs-comment">// 行指针指向二维数组a（a是行地址，与p类型匹配）</span><br>    p = a;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;二维数组的元素输出：\n&quot;</span>);<br>    <span class="hljs-comment">// 外循环控制行</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++)<br>    &#123;<br>        <span class="hljs-comment">// 内循环控制列</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++)<br>        &#123;<br>            <span class="hljs-comment">// 通过行指针访问元素p[i][j]</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%5d&quot;</span>, p[i][j]);<br>        &#125;<br>        <span class="hljs-comment">// 每输出一行后换行</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">二维数组的元素输出：<br>    <span class="hljs-number">1</span>    <span class="hljs-number">2</span>    <span class="hljs-number">3</span>    <span class="hljs-number">4</span><br>    <span class="hljs-number">5</span>    <span class="hljs-number">6</span>    <span class="hljs-number">7</span>    <span class="hljs-number">8</span><br>    <span class="hljs-number">9</span>   <span class="hljs-number">10</span>   <span class="hljs-number">11</span>   <span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+<p><strong>二维数组元素的等价访问方式</strong><br>行指针访问二维数组元素时，存在多种等价写法（以p指向a为例），本质都是通过 “行地址 + 列偏移” 定位元素：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">p[i][j]          <span class="hljs-comment">// 直观的行-列形式</span><br>== *(p[i] + j)   <span class="hljs-comment">// 行指针取当前行，再偏移列下标</span><br>== *(*(p + i) + j) <span class="hljs-comment">// 行指针偏移行下标，再偏移列下标</span><br>== <br>a[i][j]       <span class="hljs-comment">// 与原数组的访问形式完全等价</span><br></code></pre></td></tr></table></figure>
+<h3 id="二维数组的地址含义（以int-a-3-4-为例）"><a href="#二维数组的地址含义（以int-a-3-4-为例）" class="headerlink" title="二维数组的地址含义（以int a[3][4]为例）"></a>二维数组的地址含义（以<code>int a[3][4]</code>为例）</h3><table>
+<thead>
+<tr>
+<th>表示形式</th>
+<th>含义</th>
+<th>说明（地址类型&#x2F;特性）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>a</code></td>
+<td>二维数组名；数组首地址；第0行的首地址</td>
+<td>行地址，+1 跳转至下一行首地址（偏移4个int）</td>
+</tr>
+<tr>
+<td><code>a+1</code> &#x2F; <code>&amp;a[1]</code></td>
+<td>第1行的首地址</td>
+<td>行地址，+1 跳转至第2行首地址</td>
+</tr>
+<tr>
+<td><code>a[0]</code> &#x2F; <code>*(a+0)</code> &#x2F; <code>*a</code> &#x2F; <code>&amp;a[0][0]</code></td>
+<td>第0行首地址；第0行第0列元素的地址</td>
+<td>列地址，+1 跳转至当前行下一个元素地址（偏移1个int）</td>
+</tr>
+<tr>
+<td><code>a[1]+2</code> &#x2F; <code>*(a+1)+2</code> &#x2F; <code>&amp;a[1][2]</code></td>
+<td>第1行第2列元素<code>a[1][2]</code>的地址</td>
+<td>列地址，指向具体元素的地址</td>
+</tr>
+<tr>
+<td><code>*(a[1]+2)</code> &#x2F; <code>*(*(a+1)+2)</code> &#x2F; <code>a[1][2]</code></td>
+<td>第1行第2列元素<code>a[1][2]</code>的值</td>
+<td>整型值，无地址属性</td>
+</tr>
+</tbody></table>
+<h2 id="字符数组和指针"><a href="#字符数组和指针" class="headerlink" title="字符数组和指针"></a>字符数组和指针</h2><p>字符数组是 C 语言中存储字符 &#x2F; 字符串的核心工具，它既可以存储单个字符的集合，也能通过<code>\0</code>（字符串结束符）存储完整字符串。</p>
+<h3 id="字符数组的定义"><a href="#字符数组的定义" class="headerlink" title="字符数组的定义"></a>字符数组的定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 定义长度为n的字符数组（n为正整数）</span><br><span class="hljs-type">char</span> 数组名[n];<br><br><span class="hljs-comment">// 示例：定义长度为10的字符数组</span><br><span class="hljs-type">char</span> arr[<span class="hljs-number">10</span>];<br></code></pre></td></tr></table></figure>
+<h3 id="字符数组初始化方式"><a href="#字符数组初始化方式" class="headerlink" title="字符数组初始化方式"></a>字符数组初始化方式</h3><table>
+<thead>
+<tr>
+<th>初始化方式</th>
+<th>示例</th>
+<th>说明（是否含<code>\0</code>）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>逐个字符初始化（无<code>\0</code>）</td>
+<td><code>char arr1[5] = &#123;&#39;h&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;&#125;;</code></td>
+<td>纯字符数组，长度5，无<code>\0</code>，不能当作字符串使用</td>
+</tr>
+<tr>
+<td>逐个字符初始化（加<code>\0</code>）</td>
+<td><code>char arr2[6] = &#123;&#39;h&#39;,&#39;e&#39;,&#39;l&#39;,&#39;l&#39;,&#39;o&#39;,&#39;\0&#39;&#125;;</code></td>
+<td>字符串数组，长度6，手动加<code>\0</code></td>
+</tr>
+<tr>
+<td>字符串常量初始化（推荐）</td>
+<td><code>char arr3[6] = &quot;hello&quot;;</code></td>
+<td>等价于arr2，编译器自动在末尾加<code>\0</code></td>
+</tr>
+<tr>
+<td>省略长度初始化</td>
+<td><code>char arr4[] = &quot;hello&quot;;</code></td>
+<td>长度自动为6（5个字符+1个<code>\0</code>），最简洁</td>
+</tr>
+<tr>
+<td>部分初始化</td>
+<td><code>char arr5[10] = &quot;hi&quot;;</code></td>
+<td>前2位为<code>&#39;h&#39;</code>、<code>&#39;i&#39;</code>，剩余位置自动补<code>\0</code></td>
+</tr>
+</tbody></table>
+<h3 id="字符数组的输入输出"><a href="#字符数组的输入输出" class="headerlink" title="字符数组的输入输出"></a>字符数组的输入输出</h3><h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>示例</th>
+<th>特点&#x2F;注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scanf(“%s”, arr)</td>
+<td><code>scanf(&quot;%s&quot;, arr);</code></td>
+<td>不读取空格&#x2F;换行，自动加<code>\0</code>；注意数组长度，避免溢出</td>
+</tr>
+<tr>
+<td>gets()</td>
+<td><code>gets(arr);</code></td>
+<td>读取空格&#x2F;换行，自动加<code>\0</code>；存在缓冲区溢出风险</td>
+</tr>
+<tr>
+<td>fgets()</td>
+<td><code>fgets(arr, 10, stdin);</code></td>
+<td>读取空格&#x2F;换行，指定最大读取长度；会保留换行符，需手动处理</td>
+</tr>
+</tbody></table>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>示例</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单个字符输出</td>
+<td><code>printf(&quot;%c&quot;, arr[i]);</code></td>
+<td>逐个输出字符</td>
+</tr>
+<tr>
+<td>整串输出</td>
+<td><code>printf(&quot;%s&quot;, arr);</code></td>
+<td>含<code>\0</code>的字符串数组</td>
+</tr>
+<tr>
+<td>整串输出（puts()）</td>
+<td><code>puts(arr);</code></td>
+<td>输出字符串并自动换行</td>
+</tr>
+</tbody></table>
+<h3 id="字符串处理函数（需包含）"><a href="#字符串处理函数（需包含）" class="headerlink" title="字符串处理函数（需包含&lt;string.h&gt;）"></a>字符串处理函数（需包含&lt;string.h&gt;）</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+<th>示例</th>
+<th>返回值&#x2F;说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>strlen()</td>
+<td>计算字符串长度（不含<code>\0</code>）</td>
+<td><code>strlen(&quot;hello&quot;)</code></td>
+<td>返回5（仅统计有效字符，不含结束符）</td>
+</tr>
+<tr>
+<td>strcpy()</td>
+<td>字符串拷贝</td>
+<td><code>strcpy(arr, &quot;hello&quot;)</code></td>
+<td>将”hello”拷贝到arr，需保证arr长度足够</td>
+</tr>
+<tr>
+<td>strcat()</td>
+<td>字符串拼接</td>
+<td><code>strcat(arr, &quot; world&quot;)</code></td>
+<td>将” world”拼接到arr末尾，需保证arr长度足够</td>
+</tr>
+<tr>
+<td>strcmp()</td>
+<td>字符串比较（按ASCII）</td>
+<td><code>strcmp(&quot;a&quot;, &quot;b&quot;)</code></td>
+<td>a&lt;b返回-1，a&#x3D;&#x3D;b返回0，a&gt;b返回1</td>
+</tr>
+<tr>
+<td>strlwr()</td>
+<td>大写字母转小写字母</td>
+<td><code>strlwr(&quot;Abcd&quot;)</code></td>
+<td>将”Abcd”转为”abcd”</td>
+</tr>
+<tr>
+<td>strupr()</td>
+<td>小写字母转大写字母</td>
+<td><code>strupr(&quot;Abcd&quot;)</code></td>
+<td>将”Abcd”转为”ABCD”</td>
+</tr>
+</tbody></table>
+<h1 id="多级指针和指针数组"><a href="#多级指针和指针数组" class="headerlink" title="多级指针和指针数组"></a>多级指针和指针数组</h1><h2 id="多级指针"><a href="#多级指针" class="headerlink" title="多级指针"></a>多级指针</h2><p>多级指针的本质是指针变量，只是它指向的不是普通变量，而是另一个指针变量的地址。即<strong>指向指针的指针</strong><br>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> *str_arr[<span class="hljs-number">3</span>] = &#123;<span class="hljs-string">&quot;C语言&quot;</span>, <span class="hljs-string">&quot;指针数组&quot;</span>, <span class="hljs-string">&quot;多级指针&quot;</span>&#125;;<br>    <span class="hljs-type">char</span> **p = str_arr;  <span class="hljs-comment">// 二级指针指向指针数组的首地址（数组名是首元素地址）</span><br>    <br>    <span class="hljs-comment">// 遍历3个字符串</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;第%d个字符串：%s\n&quot;</span>, i+<span class="hljs-number">1</span>, *p);<span class="hljs-comment">//%s的工作逻辑：从传入的地址开始，逐字符输出直到\0 —— 它不需要 “具体字符”，只需要 “字符串的起始地址”。因此用*p</span><br>        p++;  <span class="hljs-comment">// 指针后移，指向指针数组的下一个元素</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">第<span class="hljs-number">1</span>个字符串：C语言<br>第<span class="hljs-number">2</span>个字符串：指针数组<br>第<span class="hljs-number">3</span>个字符串：多级指针<br></code></pre></td></tr></table></figure>
+<h3 id="多级指针的引用"><a href="#多级指针的引用" class="headerlink" title="多级指针的引用"></a>多级指针的引用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> x;          <span class="hljs-comment">// 定义变量x</span><br>    <span class="hljs-type">int</span> *p = &amp;x;    <span class="hljs-comment">// p指向x（一级指针）</span><br>    <span class="hljs-type">int</span> **q = &amp;p;   <span class="hljs-comment">// q指向p（二级指针）</span><br>    <span class="hljs-type">int</span> ***t = &amp;q;  <span class="hljs-comment">// t指向q（三级指针）</span><br><br>    <span class="hljs-comment">// 按顺序赋值，观察x的变化</span><br>    x = <span class="hljs-number">10</span>;    <span class="hljs-comment">// 第一步：x被赋值为10 → x=10</span><br>    *p = <span class="hljs-number">1</span>;    <span class="hljs-comment">// 第二步：*p指向x → x被覆盖为1 → x=1</span><br>    **q = <span class="hljs-number">2</span>;   <span class="hljs-comment">// 第三步：**q指向x → x被覆盖为2 → x=2</span><br>    ***t = <span class="hljs-number">3</span>;  <span class="hljs-comment">// 第四步：***t指向x → x被覆盖为3 → x=3</span><br><br>    <span class="hljs-comment">// 验证最终结果</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x = %d\n&quot;</span>, x);        <span class="hljs-comment">// 输出 3（最后一次赋值的结果）</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*p = %d\n&quot;</span>, *p);      <span class="hljs-comment">// 输出 3（p指向x）</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;**q = %d\n&quot;</span>, **q);    <span class="hljs-comment">// 输出 3（q→p→x）</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;***t = %d\n&quot;</span>, ***t);  <span class="hljs-comment">// 输出 3（t→q→p→x）</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><p>指针数组的本质是数组（不是指针），只是数组的每个元素都是同类型的指针变量</p>
+<ul>
+<li>普通数组：元素是<code>int/char</code>等基础类型（如<code>int arr[5]</code>，元素是 5 个<code>int</code>）；</li>
+<li>指针数组：元素是<code>int*/char*</code>等指针类型（如<code>int *p[5]</code>，元素是 5 个<code>int*</code>）。</li>
+</ul>
+<h3 id="指针数组的定义与用法"><a href="#指针数组的定义与用法" class="headerlink" title="指针数组的定义与用法"></a>指针数组的定义与用法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">数据类型 *数组名[数组长度];<br></code></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 100</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">char</span> country[N][<span class="hljs-number">20</span>], *p[N];  <span class="hljs-comment">// country：存储字符串的二维数组；p：指针数组（每个元素指向一个字符串）</span><br>    <span class="hljs-type">char</span> *t;                     <span class="hljs-comment">// 交换指针的临时变量</span><br>    <span class="hljs-type">int</span> i,j,k,n;<br>    <br>    <span class="hljs-comment">// 指针数组初始化：让p的每个元素指向country的对应行（即每个国家名称的首地址）</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)<br>        p[i] = country[i];<br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Input n:&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Input country name:\n&quot;</span>);<br>    <span class="hljs-comment">// 输入n个国家名称，存入country，同时p的元素已指向对应字符串</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, p[i]);<br>    <br>    <span class="hljs-comment">// 选择法排序（控制轮数）</span><br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++)<br>    &#123;<br>        k = i;  <span class="hljs-comment">// 假设当前轮的第i个元素是最小的</span><br>        <span class="hljs-comment">// 查找当前轮的最小字符串对应的指针下标k</span><br>        <span class="hljs-keyword">for</span>(j=i+<span class="hljs-number">1</span>;j&lt;n;j++)<br>        &#123;<br>            <span class="hljs-comment">// strcmp(a,b)：a&gt;b返回正数，a=b返回0，a&lt;b返回负数</span><br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">strcmp</span>(p[k], p[j]) &gt; <span class="hljs-number">0</span>)<br>                k = j;<br>        &#125;<br>        <span class="hljs-comment">// 若最小元素不是当前i位置，交换p[i]和p[k]的指针（仅交换地址，不移动字符串）</span><br>        <span class="hljs-keyword">if</span>(k!=i)<br>        &#123;<br>            t = p[k];<br>            p[k] = p[i];<br>            p[i] = t;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 输出排序后的字符串（通过指针数组p访问）</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Sorted country name:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s &quot;</span>, p[i]);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/* 程序核心逻辑</span><br><span class="hljs-comment">1.指针数组的作用：p[N]的每个元素是指针，指向country二维数组的一行（即一个国家名称的首地址）。</span><br><span class="hljs-comment">2.排序的高效性：选择排序时，仅交换p数组中指针的指向（地址），无需移动country中存储的字符串本身，避免了大量字符拷贝，效率更高。</span><br><span class="hljs-comment">3.字符串比较：通过strcmp函数按字典序比较两个字符串的大小，决定排序的交换逻辑。*/</span><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c%E8%AF%AD%E8%A8%80/" class="category-chain-item">c语言</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数组和指针</div>
+      <div>https://linsport.github.io/2025/12/21/c语言编程基础/数组和指针/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sport lin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/10/ctf/TKKCTF2025WEB/" title="TKKCTF2025web">
+                        <span class="hidden-mobile">TKKCTF2025web</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>

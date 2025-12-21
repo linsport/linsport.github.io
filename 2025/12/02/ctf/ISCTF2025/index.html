@@ -22,7 +22,7 @@
     <meta name="description" content="Webb@by n0t1ce b0ard打开靶机进入注册界面发现可以进行文件上传，因此存在文件上传漏洞。构造一句话木马 123&lt;?php @eval($_POST[&#x27;admin&#x27;]); ?&gt; 随意输入账号密码，并上传我们的木马，页面提示注册成功并返回一句警告由于比赛有提供网页后端代码，因此打开registration.php直接获取上传文件存储路径，即images&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ISCTF2025">
-<meta property="og:url" content="https://linsport.github.io/2025/12/02/ctf/ISCTF/index.html">
+<meta property="og:url" content="https://linsport.github.io/2025/12/02/ctf/ISCTF2025/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Webb@by n0t1ce b0ard打开靶机进入注册界面发现可以进行文件上传，因此存在文件上传漏洞。构造一句话木马 123&lt;?php @eval($_POST[&#x27;admin&#x27;]); ?&gt; 随意输入账号密码，并上传我们的木马，页面提示注册成功并返回一句警告由于比赛有提供网页后端代码，因此打开registration.php直接获取上传文件存储路径，即images&#x2F;">
 <meta property="og:locale" content="zh_CN">
@@ -40,8 +40,10 @@
 <meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-6.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc1-7.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc2-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc3-1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/ISCTF2025/misc3-2.png">
 <meta property="article:published_time" content="2025-12-02T11:44:35.710Z">
-<meta property="article:modified_time" content="2025-12-06T07:22:46.233Z">
+<meta property="article:modified_time" content="2025-12-06T09:00:32.855Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://linsport.github.io/img/ctf/ISCTF2025/web1-1.png">
@@ -242,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          735 字
+          898 字
         
       </span>
     
@@ -253,7 +255,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -307,7 +309,10 @@
 <h1 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h1><h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p>下载附件，修改后缀为zip解压，打开第一个word文档，检查发现存在隐藏文字<br><img src="/img/ctf/ISCTF2025/misc1-1.png" srcset="/img/loading.gif" lazyload alt="检查"><br>利用<code>ctrl+A</code>选中全文档，在字体中关闭隐藏，出现谕言1<br><img src="/img/ctf/ISCTF2025/misc1-2.png" srcset="/img/loading.gif" lazyload alt="谕言1"><br>利用stegsolve查看附件中的图片，发现异常片段<br><img src="/img/ctf/ISCTF2025/misc1-3.png" srcset="/img/loading.gif" lazyload alt="片段"><br>将其base64解码后得到谕言2<br><img src="/img/ctf/ISCTF2025/misc1-4.png" srcset="/img/loading.gif" lazyload alt="谕言2"><br>利用010 Editor查看图片，发现末尾藏着一个压缩文件，其中包含flag3.txt<br><img src="/img/ctf/ISCTF2025/misc1-5.png" srcset="/img/loading.gif" lazyload alt="010"><br>将其提取后发现解压需要密码，利用工具爆破后得到密码<br><img src="/img/ctf/ISCTF2025/misc1-6.png" srcset="/img/loading.gif" lazyload alt="密码"><br>成功得到谕言3<br><img src="/img/ctf/ISCTF2025/misc1-7.png" srcset="/img/loading.gif" lazyload alt="谕言3"><br>将三则谕言组合起来，从上往下读得到flag</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs txt">DoNotTrustTitan_HopeYouMakeTherightChoice_FindMyGiftForYou<br></code></pre></td></tr></table></figure>
 
-<h2 id="Guess"><a href="#Guess" class="headerlink" title="Guess"></a>Guess</h2><p>秒了<br><img src="/img/ctf/ISCTF2025/misc2-1.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="Guess"><a href="#Guess" class="headerlink" title="Guess"></a>Guess</h2><p>秒了！<br><img src="/img/ctf/ISCTF2025/misc2-1.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<h2 id="湖心亭看雪"><a href="#湖心亭看雪" class="headerlink" title="湖心亭看雪"></a>湖心亭看雪</h2><p>利用随波逐流工具得到图片附加内容，发现是一个头部残缺的压缩包，将其补全利用工具还原成压缩包，发现解压需要密码。查看另一个python附件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">b&#x27;*********&#x27;</span> <span class="hljs-comment">#这个东西你以后要用到</span><br>b = <span class="hljs-string">b&#x27;blueshark&#x27;</span> <br>c = <span class="hljs-built_in">bytes</span>([x ^ y <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(a, b)])<br><span class="hljs-built_in">print</span>(c.<span class="hljs-built_in">hex</span>())<br><span class="hljs-comment">#c = 53591611155a51405e</span><br></code></pre></td></tr></table></figure>
+<p>解出a&#x3D;b’15ctf2025’输入密码成功获取一个flag.txt文件。利用010 Editor查看文件，发现含有大量非同寻常的空格或者制表符，于是判断该文件为snow隐写。<br><img src="/img/ctf/ISCTF2025/misc3-1.png" srcset="/img/loading.gif" lazyload alt="文件"><br>使用snow隐写解码工具解码，得到flag。<br><img src="/img/ctf/ISCTF2025/misc3-2.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
 
                 
               </div>
@@ -347,7 +352,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>ISCTF2025</div>
-      <div>https://linsport.github.io/2025/12/02/ctf/ISCTF/</div>
+      <div>https://linsport.github.io/2025/12/02/ctf/ISCTF2025/</div>
     </div>
     <div class="license-meta">
       
@@ -390,6 +395,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/12/10/ctf/TKKCTF2025WEB/" title="TKKCTF2025web">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">TKKCTF2025web</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

@@ -19,24 +19,26 @@
   <meta name="author" content="sport lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="什么是sql注入所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。简单来说就是通过构造一条精巧的语句，来查询到想要得到的信息。 注入分类按照查询字段  字符型: 当输入的参数为字符串时，称为字符型。 数字型: 当输入的参数为整形时，可以认为是数字型注入。  按照注入方法  Union注入">
+    <meta name="description" content="Real or AI根据介绍可知这是一道web前端小游戏题目，需要分数达到999才能获取flag。利用ctrl+f搜索关键字score，flag。找到关键代码其中function Yy(&#123;score: e, totalRounds: t, onPlayAgain: a&#125;) 接收三个参数：  e → score（得分） t → totalRounds（总回合数） a → onPl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql注入基础">
-<meta property="og:url" content="https://linsport.github.io/2025/11/30/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="TKKCTF2025web">
+<meta property="og:url" content="https://linsport.github.io/2025/12/10/ctf/TKKCTF2025WEB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是sql注入所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。简单来说就是通过构造一条精巧的语句，来查询到想要得到的信息。 注入分类按照查询字段  字符型: 当输入的参数为字符串时，称为字符型。 数字型: 当输入的参数为整形时，可以认为是数字型注入。  按照注入方法  Union注入">
+<meta property="og:description" content="Real or AI根据介绍可知这是一道web前端小游戏题目，需要分数达到999才能获取flag。利用ctrl+f搜索关键字score，flag。找到关键代码其中function Yy(&#123;score: e, totalRounds: t, onPlayAgain: a&#125;) 接收三个参数：  e → score（得分） t → totalRounds（总回合数） a → onPl">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png">
-<meta property="og:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-2.png">
-<meta property="article:published_time" content="2025-11-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-30T16:10:45.543Z">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/TKKCTF2025/RealorAI1.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/TKKCTF2025/RealorAI2.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/TKKCTF2025/RealorAI3.png">
+<meta property="og:image" content="https://linsport.github.io/img/ctf/TKKCTF2025/RealorAI4.png">
+<meta property="article:published_time" content="2025-12-10T11:34:14.388Z">
+<meta property="article:modified_time" content="2025-12-10T15:41:06.444Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png">
+<meta name="twitter:image" content="https://linsport.github.io/img/ctf/TKKCTF2025/RealorAI1.png">
   
   
   
-  <title>sql注入基础 - Hexo</title>
+  <title>TKKCTF2025web - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="sql注入基础"></span>
+            <span id="subtitle" data-typed-text="TKKCTF2025web"></span>
           
         </div>
 
@@ -218,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-11-30 00:00" pubdate>
-          2025年11月30日 凌晨
+        <time datetime="2025-12-10 19:34" pubdate>
+          2025年12月10日 晚上
         </time>
       </span>
     
@@ -230,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          509 字
+          103 字
         
       </span>
     
@@ -241,7 +243,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -278,34 +280,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">sql注入基础</h1>
+            <h1 id="seo-header">TKKCTF2025web</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="什么是sql注入"><a href="#什么是sql注入" class="headerlink" title="什么是sql注入"></a>什么是sql注入</h1><p>所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。<br>简单来说就是通过<strong>构造一条精巧的语句，来查询到想要得到的信息。</strong></p>
-<h1 id="注入分类"><a href="#注入分类" class="headerlink" title="注入分类"></a>注入分类</h1><p><strong>按照查询字段</strong></p>
+                <h1 id="Real-or-AI"><a href="#Real-or-AI" class="headerlink" title="Real or AI"></a>Real or AI</h1><p>根据介绍可知这是一道web前端小游戏题目，需要分数达到999才能获取flag。<br><img src="/img/ctf/TKKCTF2025/RealorAI1.png" srcset="/img/loading.gif" lazyload alt="题目"><br>利用ctrl+f搜索关键字score，flag。找到关键代码<br><img src="/img/ctf/TKKCTF2025/RealorAI2.png" srcset="/img/loading.gif" lazyload alt="关键"><br><img src="/img/ctf/TKKCTF2025/RealorAI3.png" srcset="/img/loading.gif" lazyload alt="关键"><br>其中<code>function Yy(&#123;score: e, totalRounds: t, onPlayAgain: a&#125;) </code><br>接收三个参数：</p>
 <ul>
-<li>字符型: 当输入的参数为字符串时，称为字符型。</li>
-<li>数字型: 当输入的参数为整形时，可以认为是数字型注入。</li>
+<li>e → score（得分）</li>
+<li>t → totalRounds（总回合数）</li>
+<li>a → onPlayAgain（点击或按键触发重新开始）<br>因此，若要获取flag只需要编写一个sha256脚本即可<br><img src="/img/ctf/TKKCTF2025/RealorAI4.png" srcset="/img/loading.gif" lazyload alt="flag"></li>
 </ul>
-<p><strong>按照注入方法</strong></p>
-<ul>
-<li>Union注入</li>
-<li>报错注入</li>
-<li>布尔注入</li>
-<li>时间注入</li>
-</ul>
-<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><ul>
-<li>查找注入点(URL参数，表单输入，HTTP 头部等)</li>
-<li>判断是字符型还是数字型注使用<code>and1=1和and1=2</code>等来判断</li>
-<li>如果字符型，找到他的闭合方式<code>&#39; </code> <code>&#39;)</code> <code>&quot;</code></li>
-<li>判断查询列数，<code>group by</code> <code>order·by</code></li>
-<li>查询回显位置</li>
-</ul>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>下面我通过一个简单的例子来讲解上述步骤<br>首先打开sqli-labs靶场less1<br><img src="/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png" srcset="/img/loading.gif" lazyload alt="靶场"></p>
-<h2 id="判断注入类型"><a href="#判断注入类型" class="headerlink" title="判断注入类型"></a>判断注入类型</h2><p>利用HackBar提交一个参数来判断是字符型还是数字型注，发现页面正常显示，那么该题就是<strong>字符型</strong><br><img src="/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-2.png" srcset="/img/loading.gif" lazyload alt="页面"><br><strong>那么这边为什么会是字符型呢？</strong><br>因为如果是字符型的话，<code>1=2</code>就不存在数学逻辑关系，而单单只是<code>1=2</code>这个字符。<br><strong>如果他是数字型呢？</strong><br>如果它是数字型那么<code>1=2</code>就会存在数学逻辑判断，被判断为假，因为1&#x3D;2显然不成立，因此页面不会正常显示。<br><strong>由此可以得出一个快速判断的方法</strong><br>提交<code>?id=2-1</code>参数，如果它是字符型，那么页面就会出现与<code>id=2</code>时相同的回显。如果他是数字型，那么页面就会出现与<code>id=1</code>时相同的回显。<strong>因为在字符型下不存在数学逻辑运算。</strong></p>
-<h2 id="寻找闭合方式"><a href="#寻找闭合方式" class="headerlink" title="寻找闭合方式"></a>寻找闭合方式</h2>
+
                 
               </div>
             
@@ -323,7 +309,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/sql/" class="category-chain-item">sql</a>
+  <a href="/categories/ctf/" class="category-chain-item">ctf</a>
   
   
 
@@ -343,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>sql注入基础</div>
-      <div>https://linsport.github.io/2025/11/30/sql/sql注入基础/</div>
+      <div>TKKCTF2025web</div>
+      <div>https://linsport.github.io/2025/12/10/ctf/TKKCTF2025WEB/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +342,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年11月30日</div>
+          <div>2025年12月10日</div>
         </div>
       
       
@@ -388,9 +374,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/02/ctf/ISCTF2025/" title="ISCTF2025">
+                      <a href="/2025/12/21/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88/" title="数组和指针">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ISCTF2025</span>
+                        <span class="hidden-mobile">数组和指针</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -398,8 +384,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/11/29/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/c%E8%AF%AD%E8%A8%80%E6%8E%92%E5%BA%8F%E6%B3%95/" title="c语言排序法">
-                        <span class="hidden-mobile">c语言排序法</span>
+                      <a href="/2025/12/02/ctf/ISCTF2025/" title="ISCTF2025">
+                        <span class="hidden-mobile">ISCTF2025</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
