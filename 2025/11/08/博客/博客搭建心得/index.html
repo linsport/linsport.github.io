@@ -35,8 +35,10 @@
 <meta property="og:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog7.png">
 <meta property="og:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog8.png">
 <meta property="og:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/fluid%E5%AE%98%E6%96%B9.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog9.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog6.png">
 <meta property="article:published_time" content="2025-11-08T04:04:15.730Z">
-<meta property="article:modified_time" content="2025-11-13T05:06:28.345Z">
+<meta property="article:modified_time" content="2026-07-31T09:19:23.081Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://linsport.github.io/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog1.png">
@@ -237,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.1k 字
         
       </span>
     
@@ -248,7 +250,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -408,6 +410,15 @@
 <p>主题的自定义配置可参考<a target="_blank" rel="noopener" href="https://fluid-dev.github.io/hexo-fluid-docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">Hexo Fluid 用户手册</a></p>
 </blockquote>
 <p><strong>至此我们完成了博客的主题更改。</strong></p>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p>在后续的使用中呢我也是遇到了一些问题，于是我整理出本栏目并提供一些解决问题的方法，希望可以帮助到一样遇到困难的人。</p>
+<h2 id="ssh-connect-to-host-github-com-port-22-Connection-timed-out"><a href="#ssh-connect-to-host-github-com-port-22-Connection-timed-out" class="headerlink" title="ssh: connect to host github.com port 22: Connection timed out"></a>ssh: connect to host github.com port 22: Connection timed out</h2><p>本来一切正常，但有一天在上传博客的时候，在运行<code>hexo d</code>指令时会提示如下错误<br><img src="/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog9.png" srcset="/img/loading.gif" lazyload alt="报错"><br>通过询问ai发现这个错误提示的是连接<code>github.com</code>的<code>22</code>端口被拒绝了。<br>于是我们通过在<code>C:\Users\用户名\.ssh</code>目录新建一个<strong>没有后缀名</strong>的文件, 名字叫做<code>config</code>在文件写入下面内容</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Host github.com<br>  Hostname ssh.github.com<br>  Port <span class="hljs-number">443</span><br>  <span class="hljs-keyword">User</span> <span class="hljs-title">git</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/blog6.png" srcset="/img/loading.gif" lazyload alt=".ssh目录"></p>
+<p>保存完成后再运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+<p>若出现</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">Hi xxx! You<span class="hljs-symbol">&#x27;ve</span> successfully authenticated<br></code></pre></td></tr></table></figure>
+<p>即代表成功，重新执行<code>hexo d</code>部署博客即可</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing">hexo的一些指令</a></p>
 
                 
