@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>ISCC2026</title>
+    <link href="/2026/05/05/ctf/ISCC2026/"/>
+    <url>/2026/05/05/ctf/ISCC2026/</url>
+    
+    <content type="html"><![CDATA[<h1 id="web-消失的密钥"><a href="#web-消失的密钥" class="headerlink" title="web 消失的密钥"></a>web 消失的密钥</h1><p>先输入<code>key</code>进行尝试，发现被屏蔽了。因此利用双写绕过,输入<code>kekeyy</code>进入第二关。<br><img src="/img/ctf/ISCC2026/web1.png" alt="第二关"><br>先输入<code>a=1337</code>进性尝试<br>返回</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[AUTH] Phase 1 Success. Master Const: 1337<br>[SYS] Error: POST data structure &#x27;a&#x27; missing. Terminal locked.<br></code></pre></td></tr></table></figure><p>再改变形式尝试</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">a[]=1337 ;失败<br>a[key]=1337  ;成功进入下个阶段<br></code></pre></td></tr></table></figure><p><img src="/img/ctf/ISCC2026/web2.png" alt="下个阶段"></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">[AUTH] Phase 2 Identity Confirmed. Hash protocol initiated. <br> Params &#x27;a&#x27;, &#x27;b&#x27; required via GET.<br></code></pre></td></tr></table></figure><p> 利用经典的MD5碰撞对<code>a=240610708 &amp; b=QNKCDZO</code>成功获取flag。<br><img src="/img/ctf/ISCC2026/web3.png" alt="flag"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctf</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SHCTF3rd</title>
     <link href="/2026/02/02/ctf/SHCTF3rd/"/>
     <url>/2026/02/02/ctf/SHCTF3rd/</url>
@@ -54,19 +73,6 @@
       <category>ctf</category>
       
     </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/2025/12/30/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88%20/"/>
-    <url>/2025/12/30/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88%20/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
     
     
   </entry>
