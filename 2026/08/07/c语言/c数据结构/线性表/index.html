@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sport lin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="线性表线性表是由 n (n ≥ 0) 个相同类型的数据元素构成的有限序列，其中每个元素（除第一个和最后一个）都有唯一的前驱和后继。数据元素之间的关系是一对一的关系。在计算机中，线性表主要有两种实现方式。 顺序存储 —— 顺序表顺序表用一段地址连续的存储单元依次存储线性表的数据元素。逻辑上相邻的元素物理位置也相邻，便于随机存取，但插入删除需要移动大量元素，效率低。 顺序表的实现顺序表通常用一维数组实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性表">
+<meta property="og:url" content="https://linsport.github.io/2026/08/07/c%E8%AF%AD%E8%A8%80/c%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="线性表线性表是由 n (n ≥ 0) 个相同类型的数据元素构成的有限序列，其中每个元素（除第一个和最后一个）都有唯一的前驱和后继。数据元素之间的关系是一对一的关系。在计算机中，线性表主要有两种实现方式。 顺序存储 —— 顺序表顺序表用一段地址连续的存储单元依次存储线性表的数据元素。逻辑上相邻的元素物理位置也相邻，便于随机存取，但插入删除需要移动大量元素，效率低。 顺序表的实现顺序表通常用一维数组实">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-07T08:59:12.764Z">
+<meta property="article:author" content="sport lin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>线性表 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/glassBG.css">
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"linsport.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hello, World!</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/theme%20picture/1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="线性表"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-07 00:00" pubdate>
+          2026年8月7日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          22 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">线性表</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>线性表是由 <strong>n (n ≥ 0)</strong> 个相同类型的数据元素构成的<strong>有限序列</strong>，其中每个元素（除第一个和最后一个）都有唯一的前驱和后继。数据元素之间的关系是一对一的关系。在计算机中，线性表主要有两种实现方式。</p>
+<h1 id="顺序存储-——-顺序表"><a href="#顺序存储-——-顺序表" class="headerlink" title="顺序存储 —— 顺序表"></a>顺序存储 —— 顺序表</h1><p>顺序表用一段地址连续的存储单元依次存储线性表的数据元素。逻辑上相邻的元素物理位置也相邻，便于随机存取，但插入删除需要移动大量元素，效率低。</p>
+<h2 id="顺序表的实现"><a href="#顺序表的实现" class="headerlink" title="顺序表的实现"></a>顺序表的实现</h2><p>顺序表通常用<strong>一维数组</strong>实现。实际使用中，有两种分配方式：</p>
+<ul>
+<li>静态分配</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 50</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sqlist</span> &#123;</span><br>	ElemType data[MAXSIZE]; <br>	<span class="hljs-type">int</span> len; <br>&#125; SqList;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>动态分配</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sqlist</span> &#123;</span><br>	ElemType *data; <br>	<span class="hljs-type">int</span> len; <br>    <span class="hljs-type">int</span> capacity;<br>&#125; SqList;<br></code></pre></td></tr></table></figure>
+<p>其中<code>len</code>表示当前长度，<code>capacity</code>表示当前最大容量。实际应用中<code>ElemType</code>会被改为所需要的数据类型。<br>如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.h</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> OK 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ERROR -1</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>	<span class="hljs-type">char</span>** data; <br>	<span class="hljs-type">int</span> len;<br>    <span class="hljs-type">int</span> capacity;<br>&#125; SqList;<br></code></pre></td></tr></table></figure>
+
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdbool.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span># <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;seqlist.h&quot;</span></span><br><br><br><br><span class="hljs-type">bool</span> <span class="hljs-title function_">InitList</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> initCapacity)</span>&#123;<br>    L-&gt;data = (<span class="hljs-type">char</span>**)<span class="hljs-built_in">malloc</span>(initCapacity * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>*));<br>    <span class="hljs-keyword">if</span> (L-&gt;data == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>    L-&gt;len = <span class="hljs-number">0</span>;<br>    L-&gt;capacity = initCapacity;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>该函数的作用是初始化一个空的顺序表，容量为<code>initCapacity</code>。</p>
+<h2 id="顺序表核心功能"><a href="#顺序表核心功能" class="headerlink" title="顺序表核心功能"></a>顺序表核心功能</h2><h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>为了在第<code>i</code>个元素处实现插入操作，直接通过下标定位到第 <code>i</code> 个位置。然后将该位置及之后的元素整体后移，腾出空位，最后放入新元素。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">insertElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">char</span>* e)</span> &#123;<br>	<span class="hljs-keyword">if</span>( i &lt; <span class="hljs-number">1</span> || i &gt;L-&gt; len + <span class="hljs-number">1</span>) &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Insert position %d is invalid\n&quot;</span>,i);<br>		<span class="hljs-keyword">return</span>  ERROR; <br>	&#125;<br>	<span class="hljs-keyword">if</span>(L-&gt;len &gt;= L-&gt;capacity) &#123;<br>        <span class="hljs-type">int</span> newCap = L-&gt;capacity * <span class="hljs-number">2</span>;<br>        <span class="hljs-type">char</span> **newData = (<span class="hljs-type">char</span> **)<span class="hljs-built_in">realloc</span>(L-&gt;data, newCap * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span> *));<br>        L-&gt;data = newData;         <br>        L-&gt;capacity = newCap;<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=L-&gt;len; j&gt;=i; j-- ) &#123;<br>		L-&gt;data[j] = L-&gt;data[j - <span class="hljs-number">1</span>];<br>	&#125;<br>	L-&gt;data[i - <span class="hljs-number">1</span>] = strdup(e);<br>	L-&gt;len++;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Successfully inserted\n&quot;</span>);<br>	<span class="hljs-keyword">return</span> OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>当元素个数已达容量上限<code>（len == capacity）</code>时，先用 <code>realloc</code> 扩充为原来 <code>2</code> 倍 的空间。使用临时指针 <code>newData</code> 接收返回值，避免扩容失败时丢失原数据。成功后同步更新 <code>data</code> 和 <code>capacity</code>。</li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><h4 id="删除第i个结点"><a href="#删除第i个结点" class="headerlink" title="删除第i个结点"></a>删除第i个结点</h4><p>为了在第<code>i</code>个元素处实现删除操作，直接通过下标定位到第 <code>i</code> 个位置。然后将该位置及之后的所有元素向前移动一格，覆盖被删位置，保持顺序表的连续性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">char</span>* <span class="hljs-title function_">removeElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i)</span> &#123;<br>    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span> || i &gt;= L-&gt;len) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Remove position %d is invalid\n&quot;</span>, i);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-type">char</span> *removed = L-&gt;data[i<span class="hljs-number">-1</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i; j &lt; L-&gt;len ; j++) &#123;<br>     L-&gt;data[j - <span class="hljs-number">1</span>] = L-&gt;data[j];<br>    &#125;<br>    L-&gt;len--;<br>    <span class="hljs-keyword">return</span> removed;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>返回字符串指针，将内存所有权交给调用者，调用者需在适当时候 <code>free(removed)</code> 以避免内存泄漏。</li>
+</ul>
+<h4 id="删除值为x的第一个结点"><a href="#删除值为x的第一个结点" class="headerlink" title="删除值为x的第一个结点"></a>删除值为x的第一个结点</h4><p>为了删除值为<code>x</code>的第一个结点，首先需要找到值为<code>x</code>的第一个结点,然后后再将其位置后的所有元素向前移一位，覆盖被删位置。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">locateDelete</span><span class="hljs-params">(SqList *L, <span class="hljs-type">char</span>* x)</span> &#123;<br>    <span class="hljs-keyword">if</span> (L == <span class="hljs-literal">NULL</span> || L-&gt;len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ERROR;<br>	<span class="hljs-type">int</span>  i; <br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; L-&gt;len; i++) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(L-&gt;data[i], x) == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-built_in">free</span>(L-&gt;data[i]);<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = i + <span class="hljs-number">1</span>; k &lt; L-&gt;len; k++) &#123;<br>				L-&gt;data[k - <span class="hljs-number">1</span>] = L-&gt;data[k];<br>			&#125;<br>			L -&gt; len--;<br>			<span class="hljs-keyword">return</span> OK;<br>            &#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ERROR;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>如果要删除所有值为<code>x</code>的节点，只需要把<code>return OK</code>移到<code>if</code>语句外<code>for</code>循环的最后面即可。</li>
+</ul>
+<h3 id="更改"><a href="#更改" class="headerlink" title="更改"></a>更改</h3><p>为了实现更改第<code>i</code>个节点的值，要先释放掉旧值防止内存泄漏，然后再拷贝新值即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">updateElem</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *new_value)</span> &#123;<br>    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span> || i &gt; L-&gt;len) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Position %d is invalid\n&quot;</span>, i);<br>        <span class="hljs-keyword">return</span> ERROR;<br>    &#125;<br>    <span class="hljs-built_in">free</span>(L-&gt;data[i - <span class="hljs-number">1</span>]);<br>    L-&gt;data[i - <span class="hljs-number">1</span>] = strdup(new_value);<br>    <span class="hljs-keyword">if</span> (L-&gt;data[i - <span class="hljs-number">1</span>] == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Memory allocation failed!\n&quot;</span>);<br>        L-&gt;len--;  <br>        <span class="hljs-keyword">return</span> ERROR;<br>    &#125;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><h3 id="输出第i个元素"><a href="#输出第i个元素" class="headerlink" title="输出第i个元素"></a>输出第i个元素</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">char</span>* <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L, <span class="hljs-type">int</span> i)</span> &#123;<br>	<span class="hljs-keyword">if</span>( L == <span class="hljs-literal">NULL</span> || i &lt; <span class="hljs-number">1</span> || i &gt; L-&gt;len ) &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> L-&gt;data[i - <span class="hljs-number">1</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="输出所有元素"><a href="#输出所有元素" class="headerlink" title="输出所有元素"></a>输出所有元素</h3><p>要想将顺序表中所有元素输出，只需要遍历一遍即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.c</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    <span class="hljs-keyword">if</span>(L -&gt; len &lt;= <span class="hljs-number">0</span>) &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Sequential list is empty\n&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>	&#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; L -&gt; len; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, L -&gt; data[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>如果希望带序号输出,可以改为：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d: %s\n&quot;</span>, i + <span class="hljs-number">1</span>, L-&gt;data[i]);<br></code></pre></td></tr></table></figure>
+
+<h2 id="顺序表其他功能"><a href="#顺序表其他功能" class="headerlink" title="顺序表其他功能"></a>顺序表其他功能</h2><h3 id="判断表是否为空"><a href="#判断表是否为空" class="headerlink" title="判断表是否为空"></a>判断表是否为空</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> <span class="hljs-title function_">empty</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>&#123;<br>    <span class="hljs-keyword">return</span> L-&gt;len == <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="求表长"><a href="#求表长" class="headerlink" title="求表长"></a>求表长</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">length</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>&#123;<br>    <span class="hljs-keyword">return</span> L-&gt;len;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="置表空"><a href="#置表空" class="headerlink" title="置表空"></a>置表空</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">clear</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; L-&gt;len; i++) &#123;<br>        <span class="hljs-built_in">free</span>(L-&gt;data[i]);      <span class="hljs-comment">// 释放每个字符串</span><br>    &#125;<br>    L-&gt;len = <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="摧毁表"><a href="#摧毁表" class="headerlink" title="摧毁表"></a>摧毁表</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    clear(L);<br>    <span class="hljs-built_in">free</span>(L-&gt;data);<br>    L-&gt;data = <span class="hljs-literal">NULL</span>;<br>    L-&gt;len = <span class="hljs-number">0</span>;<br>    L-&gt;capacity = <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>至此，顺序表的核心功能均已实现。接下来，需要构建一个头文件<code>API</code>，通过 <code>main.c</code> 将这些模块整合起来，即可构建一个可交互的线性表程序。</p>
+<h2 id="seqlist-h"><a href="#seqlist-h" class="headerlink" title="seqlist.h"></a>seqlist.h</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//seqlist.h</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>	<span class="hljs-type">char</span>** data; <br>	<span class="hljs-type">int</span> len;<br>    <span class="hljs-type">int</span> capacity;<br>&#125; SqList;<br><br><span class="hljs-type">bool</span> <span class="hljs-title function_">InitList</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> initCapacity)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">insertElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">char</span> *e)</span>;<br><span class="hljs-type">char</span>* <span class="hljs-title function_">removeElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">locateDelete</span><span class="hljs-params">(SqList *L, <span class="hljs-type">char</span> *x)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">updateElem</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *new_value)</span>;<br><span class="hljs-type">char</span>* <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L, <span class="hljs-type">int</span> i)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">(SqList *L)</span>;<br><span class="hljs-type">bool</span> <span class="hljs-title function_">empty</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">length</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">clear</span><span class="hljs-params">(SqList *L)</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">(SqList *L)</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="seqlist-c完整代码"><a href="#seqlist-c完整代码" class="headerlink" title="seqlist.c完整代码"></a>seqlist.c完整代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdbool.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-meta"># <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;seqlist.h&quot;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ERROR -1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> OK 1</span><br><br><span class="hljs-comment">//初始化</span><br><span class="hljs-type">bool</span> <span class="hljs-title function_">InitList</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> initCapacity)</span>&#123;<br>    L-&gt;data = (<span class="hljs-type">char</span>**)<span class="hljs-built_in">malloc</span>(initCapacity * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>*));<br>    <span class="hljs-keyword">if</span> (L-&gt;data == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <br>    L-&gt;len = <span class="hljs-number">0</span>;<br>    L-&gt;capacity = initCapacity;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-comment">//判断表是否为空</span><br><span class="hljs-type">bool</span> <span class="hljs-title function_">empty</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>&#123;<br>    <span class="hljs-keyword">if</span> (L-&gt;len == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><span class="hljs-comment">//求表长</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">length</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L)</span>&#123;<br>    <span class="hljs-keyword">return</span> L-&gt;len;<br>&#125;<br><span class="hljs-comment">// 清空（释放所有字符串，长度置0，但保留数组空间）</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">clear</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; L-&gt;len; i++) &#123;<br>        <span class="hljs-built_in">free</span>(L-&gt;data[i]);      <span class="hljs-comment">// 释放每个字符串</span><br>    &#125;<br>    L-&gt;len = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">// 完全销毁（释放所有字符串和数组本身）</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    clear(L);<br>    <span class="hljs-built_in">free</span>(L-&gt;data);<br>    L-&gt;data = <span class="hljs-literal">NULL</span>;<br>    L-&gt;len = <span class="hljs-number">0</span>;<br>    L-&gt;capacity = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//取下标为i的元素(第i+1个, 数组下标&#x27;0&#x27;处存储元素e1,下标&#x27;n-1&#x27;处存储en)</span><br><br><span class="hljs-type">char</span>* <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-type">const</span> SqList *L, <span class="hljs-type">int</span> i)</span> &#123;<br>	<span class="hljs-keyword">if</span>( L == <span class="hljs-literal">NULL</span> || i &lt; <span class="hljs-number">0</span> || i &gt;= L-&gt;len ) &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>	&#125;<br>	<span class="hljs-keyword">return</span> L-&gt;data[i];<br>&#125;<br><br><span class="hljs-comment">//在顺序表下标i(第i+1个元素)处, 插入新元素e</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">insertElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">char</span>* e)</span> &#123;<br>	<span class="hljs-keyword">if</span>( i &lt; <span class="hljs-number">1</span> || i &gt;L-&gt; len + <span class="hljs-number">1</span>) &#123;<br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Insert position %d is invalid\n&quot;</span>,i);<br>		<span class="hljs-keyword">return</span>  ERROR; <br>	&#125;<br>	<span class="hljs-keyword">if</span>(L-&gt;len &gt;= L-&gt;capacity) &#123;<br>        <span class="hljs-type">int</span> newCap = L-&gt;capacity * <span class="hljs-number">2</span>;<br>        <span class="hljs-type">char</span> **newData = (<span class="hljs-type">char</span> **)<span class="hljs-built_in">realloc</span>(L-&gt;data, newCap * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span> *));<br>        L-&gt;data = newData;         <br>        L-&gt;capacity = newCap;<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=L-&gt;len; j&gt;=i; j-- ) &#123;<br>		L-&gt;data[j] = L-&gt;data[j - <span class="hljs-number">1</span>];<br>	&#125;<br>	L-&gt;data[i - <span class="hljs-number">1</span>] = strdup(e);<br>	L-&gt;len++;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Successfully inserted\n&quot;</span>);<br>	<span class="hljs-keyword">return</span> OK;<br>&#125;<br><span class="hljs-comment">// 删除第 i 个的元素，并返回被删除的字符串（由调用者负责 free）</span><br><span class="hljs-type">char</span>* <span class="hljs-title function_">removeElm</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i)</span> &#123;<br>    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span> || i &gt;= L-&gt;len) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Remove position %d is invalid\n&quot;</span>, i);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-type">char</span> *removed = L-&gt;data[i<span class="hljs-number">-1</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i; j &lt; L-&gt;len ; j++) &#123;<br>     L-&gt;data[j - <span class="hljs-number">1</span>] = L-&gt;data[j];<br>    &#125;<br>    L-&gt;len--;<br>    <span class="hljs-keyword">return</span> removed;<br>&#125;<br><span class="hljs-comment">//删除线性表L中: 值为x的第一个结点 </span><br><span class="hljs-type">int</span> <span class="hljs-title function_">locateDelete</span><span class="hljs-params">(SqList *L, <span class="hljs-type">char</span>* x)</span> &#123;<br>    <span class="hljs-keyword">if</span> (L == <span class="hljs-literal">NULL</span> || L-&gt;len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ERROR;<br>	<span class="hljs-type">int</span>  i; <br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; L-&gt;len; i++) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(L-&gt;data[i], x) == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-built_in">free</span>(L-&gt;data[i]);<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = i + <span class="hljs-number">1</span>; k &lt; L-&gt;len; k++) &#123;<br>				L-&gt;data[k - <span class="hljs-number">1</span>] = L-&gt;data[k];<br>			&#125;<br>			L -&gt; len--;<br>			<span class="hljs-keyword">return</span> OK;<br>            &#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> ERROR;<br>&#125;<br><br><span class="hljs-comment">//更改第i个元素的值</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">updateElem</span><span class="hljs-params">(SqList *L, <span class="hljs-type">int</span> i, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *new_value)</span> &#123;<br>    <span class="hljs-keyword">if</span> (i &lt; <span class="hljs-number">1</span> || i &gt; L-&gt;len) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Position %d is invalid\n&quot;</span>, i);<br>        <span class="hljs-keyword">return</span> ERROR;<br>    &#125;<br>    <span class="hljs-built_in">free</span>(L-&gt;data[i - <span class="hljs-number">1</span>]);<br>    L-&gt;data[i - <span class="hljs-number">1</span>] = strdup(new_value);<br>    <span class="hljs-keyword">if</span> (L-&gt;data[i - <span class="hljs-number">1</span>] == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Memory allocation failed!\n&quot;</span>);<br>        L-&gt;len--;  <br>        <span class="hljs-keyword">return</span> ERROR;<br>    &#125;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br><span class="hljs-comment">//打印输出顺序表</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">(SqList *L)</span> &#123;<br>    <span class="hljs-keyword">if</span>(L -&gt; len &lt;= <span class="hljs-number">0</span>) &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Sequential list is empty\n&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>	&#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; L -&gt; len; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, L -&gt; data[i]);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="主函数main-c"><a href="#主函数main-c" class="headerlink" title="主函数main.c"></a>主函数main.c</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// main.c</span><br><span class="hljs-comment">// main.c</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;seqlist.h&quot;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">printMenu</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n======== Sequential List Menu ========\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1. Initialize list\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2. Insert element (by position)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;3. Delete element (by position)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;4. Delete element (by value, first occurrence)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;5. Update element (by position)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;6. Get element at position i\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;7. Print all elements\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;8. Check if list is empty\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;9. Get list length\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;10. Clear list\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;11. Destroy list\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0. Exit\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter your choice: &quot;</span>);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    SqList L;<br>    <span class="hljs-type">int</span> choice, pos, initCap;<br>    <span class="hljs-type">char</span> *value = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-type">char</span> buffer[<span class="hljs-number">256</span>];<br>    L.data = <span class="hljs-literal">NULL</span>;<br>    L.len = <span class="hljs-number">0</span>;<br>    L.capacity = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Welcome to Sequential List Interactive Program! Please initialize first.\n&quot;</span>);<br><br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>        printMenu();<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;choice) != <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid input, please enter a number.\n&quot;</span>);<br>            <span class="hljs-keyword">while</span> (getchar() != <span class="hljs-string">&#x27;\n&#x27;</span>);<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        getchar(); <br><br>        <span class="hljs-keyword">switch</span> (choice) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">if</span> (L.data != <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List already initialized. Destroy first.\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter initial capacity: &quot;</span>);<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;initCap);<br>                getchar();<br>                <span class="hljs-keyword">if</span> (InitList(&amp;L, initCap)) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Initialization successful, capacity = %d.\n&quot;</span>, L.capacity);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Initialization failed (out of memory).\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter insert position (1-based): &quot;</span>);<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;pos);<br>                getchar();<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter string to insert: &quot;</span>);<br>                fgets(buffer, <span class="hljs-keyword">sizeof</span>(buffer), <span class="hljs-built_in">stdin</span>);<br>                buffer[<span class="hljs-built_in">strcspn</span>(buffer, <span class="hljs-string">&quot;\n&quot;</span>)] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>                <span class="hljs-keyword">if</span> (insertElm(&amp;L, pos, buffer) == OK) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Insert successful.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter delete position: &quot;</span>);<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;pos);<br>                getchar();<br>                value = removeElm(&amp;L, pos);<br>                <span class="hljs-keyword">if</span> (value) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Deleted element: %s\n&quot;</span>, value);<br>                    <span class="hljs-built_in">free</span>(value);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter string to delete: &quot;</span>);<br>                fgets(buffer, <span class="hljs-keyword">sizeof</span>(buffer), <span class="hljs-built_in">stdin</span>);<br>                buffer[<span class="hljs-built_in">strcspn</span>(buffer, <span class="hljs-string">&quot;\n&quot;</span>)] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>                <span class="hljs-keyword">if</span> (locateDelete(&amp;L, buffer) == OK) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Deletion successful.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Element not found.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter position to update: &quot;</span>);<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;pos);<br>                getchar();<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter new value: &quot;</span>);<br>                fgets(buffer, <span class="hljs-keyword">sizeof</span>(buffer), <span class="hljs-built_in">stdin</span>);<br>                buffer[<span class="hljs-built_in">strcspn</span>(buffer, <span class="hljs-string">&quot;\n&quot;</span>)] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>                <span class="hljs-keyword">if</span> (updateElem(&amp;L, pos, buffer) == OK) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Update successful.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter position to retrieve: &quot;</span>);<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;pos);<br>                getchar();<br>                value = get(&amp;L, pos);<br>                <span class="hljs-keyword">if</span> (value) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Element at %d: %s\n&quot;</span>, pos, value);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid position or empty list.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please initialize the list first!\n&quot;</span>);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                show(&amp;L);<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List not initialized, considered empty.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (empty(&amp;L)) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List is empty.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List is not empty.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List not initialized, length = 0.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Current length: %d\n&quot;</span>, length(&amp;L));<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List not initialized.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    clear(&amp;L);<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List cleared.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">11</span>:<br>                <span class="hljs-keyword">if</span> (L.data == <span class="hljs-literal">NULL</span>) &#123;<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List not initialized or already destroyed.\n&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    destroy(&amp;L);<br>                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;List destroyed.\n&quot;</span>);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br><br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">if</span> (L.data != <span class="hljs-literal">NULL</span>) &#123;<br>                    destroy(&amp;L);<br>                &#125;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Program exited. Goodbye!\n&quot;</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>            <span class="hljs-keyword">default</span>:<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid option, try again.\n&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/c%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">c数据结构</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>线性表</div>
+      <div>https://linsport.github.io/2026/08/07/c语言/c数据结构/线性表/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sport lin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/02/c%E8%AF%AD%E8%A8%80/c%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                        <span class="hidden-mobile">哈希表</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --></body>
+</html>
