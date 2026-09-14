@@ -19,12 +19,12 @@
   <meta name="author" content="sport lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="WEB上古遗迹档案馆首先判断注入类型，是字符型利用group by判断列数是2列初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 archive_db(数据库误将内置函数解析为库下自定义函数，意外暴露库名)尝试直接访问得到的库名下的第一个表名，发现无法正常回显因此利用报错注入得到关键库名最终一步步构造url拼接得到flag 12注:extractvalue 函数有字符长度限制（仅能返回约">
+    <meta name="description" content="WEB上古遗迹档案首先判断注入类型，是字符型利用group by判断列数是2列初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 archive_db(数据库误将内置函数解析为库下自定义函数，意外暴露库名)尝试直接访问得到的库名下的第一个表名，发现无法正常回显因此利用报错注入得到关键库名最终一步步构造url拼接得到flag 12注:extractvalue 函数有字符长度限制（仅能返回约">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SHCTF3rd">
-<meta property="og:url" content="https://linsport.github.io/2025/02/02/ctf/SHCTF3rd/index.html">
+<meta property="og:url" content="https://linsport.github.io/2026/02/02/ctf/SHCTF3rd/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="WEB上古遗迹档案馆首先判断注入类型，是字符型利用group by判断列数是2列初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 archive_db(数据库误将内置函数解析为库下自定义函数，意外暴露库名)尝试直接访问得到的库名下的第一个表名，发现无法正常回显因此利用报错注入得到关键库名最终一步步构造url拼接得到flag 12注:extractvalue 函数有字符长度限制（仅能返回约">
+<meta property="og:description" content="WEB上古遗迹档案首先判断注入类型，是字符型利用group by判断列数是2列初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 archive_db(数据库误将内置函数解析为库下自定义函数，意外暴露库名)尝试直接访问得到的库名下的第一个表名，发现无法正常回显因此利用报错注入得到关键库名最终一步步构造url拼接得到flag 12注:extractvalue 函数有字符长度限制（仅能返回约">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web1-1.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web1-2.png">
@@ -37,8 +37,8 @@
 <meta property="og:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web2-2.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web2-3.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web2-4.png">
-<meta property="article:published_time" content="2025-02-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-08-06T15:18:21.594Z">
+<meta property="article:published_time" content="2026-02-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-14T14:19:54.470Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://linsport.github.io/img/ctf/SHCTF3rd/web1-1.png">
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-02 00:00" pubdate>
-          2025年2月2日 凌晨
+        <time datetime="2026-02-02 00:00" pubdate>
+          2026年2月2日 凌晨
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          299 字
+          298 字
         
       </span>
     
@@ -292,7 +292,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="上古遗迹档案馆"><a href="#上古遗迹档案馆" class="headerlink" title="上古遗迹档案馆"></a>上古遗迹档案馆</h2><p>首先判断注入类型，是字符型<br><img src="/img/ctf/SHCTF3rd/web1-1.png" srcset="/img/loading.gif" lazyload alt="如图"><br>利用<code>group by</code>判断列数是2列<br><img src="/img/ctf/SHCTF3rd/web1-2.png" srcset="/img/loading.gif" lazyload alt="如图"><br>初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 <code>archive_db</code>(数据库误将内置函数解析为库下自定义函数，意外暴露库名)<br><img src="/img/ctf/SHCTF3rd/web1-3.png" srcset="/img/loading.gif" lazyload alt="如图"><br>尝试直接访问得到的库名下的第一个表名，发现无法正常回显<br><img src="/img/ctf/SHCTF3rd/web1-4.png" srcset="/img/loading.gif" lazyload alt="如图"><br>因此利用报错注入得到关键库名<br><img src="/img/ctf/SHCTF3rd/web1-5.png" srcset="/img/loading.gif" lazyload alt="如图"><br>最终一步步构造url拼接得到flag<br><img src="/img/ctf/SHCTF3rd/web1-6.png" srcset="/img/loading.gif" lazyload alt="flag"><br><img src="/img/ctf/SHCTF3rd/web1-7.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+                <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="上古遗迹档案"><a href="#上古遗迹档案" class="headerlink" title="上古遗迹档案"></a>上古遗迹档案</h2><p>首先判断注入类型，是字符型<br><img src="/img/ctf/SHCTF3rd/web1-1.png" srcset="/img/loading.gif" lazyload alt="如图"><br>利用<code>group by</code>判断列数是2列<br><img src="/img/ctf/SHCTF3rd/web1-2.png" srcset="/img/loading.gif" lazyload alt="如图"><br>初次尝试获取数据但失败，意外从报错信息中提取到目标数据库名 <code>archive_db</code>(数据库误将内置函数解析为库下自定义函数，意外暴露库名)<br><img src="/img/ctf/SHCTF3rd/web1-3.png" srcset="/img/loading.gif" lazyload alt="如图"><br>尝试直接访问得到的库名下的第一个表名，发现无法正常回显<br><img src="/img/ctf/SHCTF3rd/web1-4.png" srcset="/img/loading.gif" lazyload alt="如图"><br>因此利用报错注入得到关键库名<br><img src="/img/ctf/SHCTF3rd/web1-5.png" srcset="/img/loading.gif" lazyload alt="如图"><br>最终一步步构造url拼接得到flag<br><img src="/img/ctf/SHCTF3rd/web1-6.png" srcset="/img/loading.gif" lazyload alt="flag"><br><img src="/img/ctf/SHCTF3rd/web1-7.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">注:extractvalue 函数有字符长度限制（仅能返回约 32 个字符），flag 内容通常超过该长度，因此查询结果会被自动截断，这是报错注入的常见问题，并非语句错误。<br>解决方法：用substr函数分段读取完整flag利用 MySQL 的substr(查询内容, 起始位置, 读取长度)函数，分段截取secret_key的内容，再拼接即可得到完整 flag。<br></code></pre></td></tr></table></figure>
 <h2 id="ez-ping"><a href="#ez-ping" class="headerlink" title="ez-ping"></a>ez-ping</h2><p>通过<code>ls</code>命令查看该文件夹下的文件<br><img src="/img/ctf/SHCTF3rd/web2-1.png" srcset="/img/loading.gif" lazyload alt="如图"><br>发现黑名单机制<br><img src="/img/ctf/SHCTF3rd/web2-2.png" srcset="/img/loading.gif" lazyload alt="如图"><br>利用<code>../</code>查看上级文件夹内文件,发现<code>flag</code><br><img src="/img/ctf/SHCTF3rd/web2-3.png" srcset="/img/loading.gif" lazyload alt="如图"><br>由于黑名单限制，因此用该方法绕过,获得flag<br><img src="/img/ctf/SHCTF3rd/web2-4.png" srcset="/img/loading.gif" lazyload alt="如图"></p>
 
@@ -334,7 +334,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>SHCTF3rd</div>
-      <div>https://linsport.github.io/2025/02/02/ctf/SHCTF3rd/</div>
+      <div>https://linsport.github.io/2026/02/02/ctf/SHCTF3rd/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月2日</div>
+          <div>2026年2月2日</div>
         </div>
       
       
@@ -378,15 +378,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/11/08/%E5%8D%9A%E5%AE%A2/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%BF%83%E5%BE%97/" title="博客搭建">
+                      <a href="/2026/02/02/ctf/HGAME2026/" title="HGAME2026">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">博客搭建</span>
+                        <span class="hidden-mobile">HGAME2026</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2026/01/30/ctf/furryCTF2025/" title="furryCTF2025">
+                        <span class="hidden-mobile">furryCTF2025</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
